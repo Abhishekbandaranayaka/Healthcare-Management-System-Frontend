@@ -1,7 +1,9 @@
 /* src/components/Sidebar.css */
 .nav-link {
     color: #000;
-    font-weight: 500;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 22px;
 }
 
 .nav-link:hover, .nav-link.active {
