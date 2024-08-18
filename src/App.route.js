@@ -7,6 +7,7 @@ import AdminDashboard from "./module/admin/admindashboard/AdminDashboard";
 import Layout from "./layout/Layout";
 import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
+import DoctorList from "./components/DoctorList/DoctorList";
 
 function AppRoutes() {
     return (
@@ -14,6 +15,7 @@ function AppRoutes() {
             <Route path="/header" element={<NavBar />}/>
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
+            <Route path="/doctor-list" element={<DoctorList />}/>
 
             <Route path="/admin" element={
                 <Layout sections={['doctor', 'patient', 'appointment', 'bill', 'medicalRecords']}>
