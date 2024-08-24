@@ -1,14 +1,18 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './DoctorList.css'
+import './DoctorList.css';
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showAddDoctorModal, setShowAddDoctorModal] = useState(false);
+    const [showEditDoctorModal, setShowEditDoctorModal] = useState(false);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
+    const [doctorToDelete, setDoctorToDelete] = useState(null);
+    const [currentDoctor, setCurrentDoctor] = useState(null);
     const [newDoctor, setNewDoctor] = useState({
         firstName: '',
         lastName: '',
@@ -42,20 +46,60 @@ const DoctorList = () => {
         setNewDoctor({ ...newDoctor, [name]: value });
     };
 
+    const handleAddDoctor = () => {
+        setShowAddDoctorModal(true);
+        setCurrentDoctor(null); // Reset current doctor
+        setNewDoctor({
+            firstName: '',
+            lastName: '',
+            specialization: '',
+            contactInformation: ''
+        });
+    };
+
+    const handleEditDoctor = (doctor) => {
+        setCurrentDoctor(doctor);
+        setNewDoctor(doctor);
+        setShowEditDoctorModal(true);
+    };
+
     const handleSubmit = () => {
         setShowConfirmationModal(true); // Show the confirmation modal
     };
 
     const handleConfirm = async () => {
         try {
-            const response = await axios.post('http://localhost:8081/api/doctor/create', newDoctor);
-            setDoctors([...doctors, response.data]);
+            if (currentDoctor) {
+                // Update existing doctor
+                await axios.put(`http://localhost:8081/api/doctor/update/${currentDoctor.id}`, newDoctor);
+                setDoctors(doctors.map(doc => doc.id === currentDoctor.id ? { ...doc, ...newDoctor } : doc));
+            } else {
+                // Add new doctor
+                const response = await axios.post('http://localhost:8081/api/doctor/create', newDoctor);
+                setDoctors([...doctors, response.data]);
+            }
             setShowAddDoctorModal(false);
+            setShowEditDoctorModal(false);
             setShowConfirmationModal(false); // Close the confirmation modal
             window.location.reload();
         } catch (error) {
-            console.error('Error adding doctor:', error);
+            console.error('Error saving doctor:', error);
         }
+    };
+
+    const handleDeleteDoctor = async () => {
+        try {
+            await axios.delete(`http://localhost:8081/api/doctor/delete/${doctorToDelete}`);
+            setDoctors(doctors.filter(doc => doc.id !== doctorToDelete));
+            setShowDeleteConfirmationModal(false);
+        } catch (error) {
+            console.error('Error deleting doctor:', error);
+        }
+    };
+
+    const confirmDelete = (id) => {
+        setDoctorToDelete(id);
+        setShowDeleteConfirmationModal(true);
     };
 
     if (loading) return <p>Loading...</p>;
@@ -72,7 +116,7 @@ const DoctorList = () => {
                 <div className="col-6">
                     <button
                         className="adddoctor-btn btn btn-outline-primary"
-                        onClick={() => setShowAddDoctorModal(true)}
+                        onClick={handleAddDoctor}
                     >
                         Add Doctor
                     </button>
@@ -86,7 +130,7 @@ const DoctorList = () => {
                     <th>Last Name</th>
                     <th>Specialization</th>
                     <th>Contact Information</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -97,23 +141,36 @@ const DoctorList = () => {
                         <td>{doctor.lastName}</td>
                         <td>{doctor.specialization}</td>
                         <td>{doctor.contactInformation}</td>
-                        <th>Update & Delete</th>
+                        <td>
+                            <img
+                                src="/assets/edit.png"
+                                alt="edit"
+                                className="img-fluid edit"
+                                onClick={() => handleEditDoctor(doctor)}
+                            />
+                            <img
+                                src="/assets/delete.png"
+                                alt="delete"
+                                className="img-fluid delete"
+                                onClick={() => confirmDelete(doctor.id)}
+                            />
+                        </td>
                     </tr>
                 ))}
                 </tbody>
             </table>
 
-            {/* Modal for Adding a Doctor */}
-            {showAddDoctorModal && (
+            {/* Modal for Adding/Editing a Doctor */}
+            {(showAddDoctorModal || showEditDoctorModal) && (
                 <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Add Doctor</h5>
+                                <h5 className="modal-title">{currentDoctor ? 'Edit Doctor' : 'Add Doctor'}</h5>
                                 <button
                                     type="button"
                                     className="close"
-                                    onClick={() => setShowAddDoctorModal(false)}
+                                    onClick={() => { setShowAddDoctorModal(false); setShowEditDoctorModal(false); }}
                                 >
                                     &times;
                                 </button>
@@ -164,7 +221,7 @@ const DoctorList = () => {
                                 <button
                                     type="button"
                                     className="btn btn-secondary"
-                                    onClick={() => setShowAddDoctorModal(false)}
+                                    onClick={() => { setShowAddDoctorModal(false); setShowEditDoctorModal(false); }}
                                 >
                                     Close
                                 </button>
@@ -187,7 +244,7 @@ const DoctorList = () => {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Confirm Addition</h5>
+                                <h5 className="modal-title">Confirm {currentDoctor ? 'Update' : 'Addition'}</h5>
                                 <button
                                     type="button"
                                     className="close"
@@ -197,7 +254,7 @@ const DoctorList = () => {
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <p>Are you sure you want to add this doctor?</p>
+                                <p>Are you sure you want to {currentDoctor ? 'update' : 'add'} this doctor?</p>
                             </div>
                             <div className="modal-footer">
                                 <button
@@ -211,6 +268,44 @@ const DoctorList = () => {
                                     type="button"
                                     className="btn btn-primary"
                                     onClick={handleConfirm}
+                                >
+                                    Yes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {/* Delete Confirmation Modal */}
+            {showDeleteConfirmationModal && (
+                <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Confirm Deletion</h5>
+                                <button
+                                    type="button"
+                                    className="close"
+                                    onClick={() => setShowDeleteConfirmationModal(false)}
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <p>Are you sure you want to delete this doctor?</p>
+                            </div>
+                            <div className="modal-footer">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    onClick={() => setShowDeleteConfirmationModal(false)}
+                                >
+                                    No
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-danger"
+                                    onClick={handleDeleteDoctor}
                                 >
                                     Yes
                                 </button>
