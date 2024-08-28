@@ -30,7 +30,7 @@ function SideBar({ sections }) {
                         </a>
                         <div className="collapse" id="doctorSubMenu">
                             <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><Link to="/create-doctor" className="nav-link">Create Doctor</Link></li>
+                                <li><Link to="/doctor-list" className="nav-link">Create Doctor</Link></li>
                                 <li><Link to="/show-doctors" className="nav-link">Show All Doctors</Link></li>
                             </ul>
                         </div>
