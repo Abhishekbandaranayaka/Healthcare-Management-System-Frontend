@@ -8,6 +8,7 @@ import Layout from "./layout/Layout";
 import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
 import DoctorList from "./components/DoctorList/DoctorList";
+import PatientList from "./components/PatientList/PatientList";
 
 function AppRoutes() {
     return (
@@ -15,16 +16,24 @@ function AppRoutes() {
             <Route path="/header" element={<NavBar />}/>
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
-            <Route path="/doctor-list" element={<DoctorList />}/>
+            {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
+            <Route path="/patient-list" element={<PatientList/>}/>
 
-            <Route path="/admin" element={
+            <Route path="/admin/*" element={
                 <Layout sections={['doctor', 'patient', 'appointment', 'bill', 'medicalRecords']}>
-                    <AdminDashboard />
+                    <Routes>
+                        <Route path="" element={<AdminDashboard />} />
+                        <Route path="doctor-list" element={<DoctorList />} />
+                        <Route path="/patient-list" element={<PatientList/>}/>
+                    </Routes>
                 </Layout>
             } />
-            <Route path="/doctor" element={
+            <Route path="/doctor/*" element={
                 <Layout sections={['patient', 'appointment', 'medicalRecords']}>
-                    <DoctorDashboard />
+                    <Routes>
+                        <Route path="" element={<DoctorDashboard/>}/>
+                        <Route path="/patient-list" element={<PatientList/>}/>
+                    </Routes>
                 </Layout>
             } />
             <Route path="/operator" element={
