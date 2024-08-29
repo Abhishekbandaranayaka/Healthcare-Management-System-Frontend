@@ -5,8 +5,11 @@ import Footer from "./components/Footer/Footer";
 import SideBar from "./components/SideBar/SideBar";
 import AdminDashboard from "./module/admin/admindashboard/AdminDashboard";
 import Layout from "./layout/Layout";
+import Layout2 from "./layout/Layoutdefault";
 import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
+import Home from './pages/homePage/Home';
+import SignupForm from './pages/signUp/SignUp';
 
 function AppRoutes() {
     return (
@@ -14,6 +17,8 @@ function AppRoutes() {
             <Route path="/header" element={<NavBar />}/>
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
+            <Route path="/signup" element={<SignupForm />}/>
+            {/* <Route path="/" element={<Home />}/> */}
 
             <Route path="/admin" element={
                 <Layout sections={['doctor', 'patient', 'appointment', 'bill', 'medicalRecords']}>
@@ -29,6 +34,11 @@ function AppRoutes() {
                 <Layout sections={['bill', 'appointment']}>
                     <OperatorDashboard />
                 </Layout>
+            } />
+             <Route path="/" element={
+                <Layout2 >
+                    <Home />
+                </Layout2>
             } />
 
         </Routes>
