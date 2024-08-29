@@ -12,6 +12,7 @@ import Home from './pages/homePage/Home';
 import SignupForm from './pages/signUp/SignUp';
 import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
+import Login from './pages/login/Login';
 
 function AppRoutes() {
     return (
@@ -20,6 +21,7 @@ function AppRoutes() {
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
             <Route path="/signup" element={<SignupForm />}/>
+            <Route path="/login" element={<Login />}/>
             {/* <Route path="/" element={<Home />}/> */}
             {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
             <Route path="/patient-list" element={<PatientList/>}/>
