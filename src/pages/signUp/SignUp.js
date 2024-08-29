@@ -35,7 +35,12 @@ function SignUp() {
       width: '135px',
       height: '46px',
       borderRadius: '23px', // Half of height to make it circular
-      background: 'linear-gradient(to bottom, #7EA9BA 0%, #7EA9BA 50%, #7EA9BA 100%)', // Gradient for 3D look
+      background: `linear-gradient(
+        to bottom, 
+        rgba(126, 169, 186, 1) 0%, 
+        rgba(126, 169, 186, 0.5) 50%, 
+        rgba(126, 169, 186, 1) 100%
+      )`,
       border: '1px solid #9AB4C6', // Light border color similar to button color
       color: 'rgba(0, 0, 0, 0.8)', // Font color to black with 80% opacity
       fontWeight: 'bold',
