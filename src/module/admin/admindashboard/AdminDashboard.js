@@ -1,10 +1,10 @@
 import React from "react";
+import DoctorList from "../../../components/DoctorList/DoctorList";
 
 function AdminDashboard() {
     return(
         <div>
-            <h1>Admin Dashboard</h1>
-            <p>Manage doctors, patients, appointments, bills, and medical records.</p>
+            <DoctorList/>
         </div>
     );
 }

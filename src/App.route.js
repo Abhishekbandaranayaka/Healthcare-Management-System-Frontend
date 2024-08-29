@@ -10,6 +10,8 @@ import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
 import Home from './pages/homePage/Home';
 import SignupForm from './pages/signUp/SignUp';
+import DoctorList from "./components/DoctorList/DoctorList";
+import PatientList from "./components/PatientList/PatientList";
 
 function AppRoutes() {
     return (
@@ -19,15 +21,24 @@ function AppRoutes() {
             <Route path="/sidebar" element={<SideBar />}/>
             <Route path="/signup" element={<SignupForm />}/>
             {/* <Route path="/" element={<Home />}/> */}
+            {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
+            <Route path="/patient-list" element={<PatientList/>}/>
 
-            <Route path="/admin" element={
-                <Layout sections={['doctor', 'patient', 'appointment', 'bill', 'medicalRecords']}>
-                    <AdminDashboard />
+            <Route path="/admin/*" element={
+                <Layout sections={['doctor', 'patient-doc', 'appointment', 'bill', 'medicalRecords']}>
+                    <Routes>
+                        <Route path="" element={<AdminDashboard />} />
+                        <Route path="doctor-list" element={<DoctorList />} />
+                        <Route path="patient-list" element={<PatientList/>}/>
+                    </Routes>
                 </Layout>
             } />
-            <Route path="/doctor" element={
+            <Route path="/doctor/*" element={
                 <Layout sections={['patient', 'appointment', 'medicalRecords']}>
-                    <DoctorDashboard />
+                    <Routes>
+                        <Route path="" element={<DoctorDashboard/>}/>
+                        <Route path="patient-list" element={<PatientList/>}/>
+                    </Routes>
                 </Layout>
             } />
             <Route path="/operator" element={
