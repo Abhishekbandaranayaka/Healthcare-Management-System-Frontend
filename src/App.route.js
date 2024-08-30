@@ -12,6 +12,7 @@ import Home from './pages/homePage/Home';
 import SignupForm from './pages/signUp/SignUp';
 import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
+import FAQ from "./pages/Faq/faq";
 
 function AppRoutes() {
     return (
@@ -51,6 +52,14 @@ function AppRoutes() {
                     <Home />
                 </Layout2>
             } />
+            <Route path="/faq" element={
+                <Layout sections={['bill', 'appointment']}>
+                    <FAQ />
+                </Layout>
+            } />
+
+
+
 
         </Routes>
     );
