@@ -5,11 +5,15 @@ import Footer from "./components/Footer/Footer";
 import SideBar from "./components/SideBar/SideBar";
 import AdminDashboard from "./module/admin/admindashboard/AdminDashboard";
 import Layout from "./layout/Layout";
+import Layout2 from "./layout/Layoutdefault";
 import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
+import Home from './pages/homePage/Home';
+import SignupForm from './pages/signUp/SignUp';
 import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
 import AppointmentList from "./components/AppointmentList/AppointmentList";
+import FAQ from "./pages/Faq/faq";
 
 function AppRoutes() {
     return (
@@ -18,6 +22,9 @@ function AppRoutes() {
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
             <Route path="/doctor-list" element={<DoctorList/>}/>
+            <Route path="/signup" element={<SignupForm />}/>
+            {/* <Route path="/" element={<Home />}/> */}
+            {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
             <Route path="/patient-list" element={<PatientList/>}/>
             <Route path="/appointment-list" element={<AppointmentList/>}/>
 
@@ -47,6 +54,19 @@ function AppRoutes() {
                     </Routes>
                 </Layout>
             } />
+             <Route path="/" element={
+                <Layout2 >
+                    <Home />
+                </Layout2>
+            } />
+            <Route path="/faq" element={
+                <Layout sections={['bill', 'appointment']}>
+                    <FAQ />
+                </Layout>
+            } />
+
+
+
 
         </Routes>
     );
