@@ -5,8 +5,11 @@ import Footer from "./components/Footer/Footer";
 import SideBar from "./components/SideBar/SideBar";
 import AdminDashboard from "./module/admin/admindashboard/AdminDashboard";
 import Layout from "./layout/Layout";
+import Layout2 from "./layout/Layoutdefault";
 import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
+import Home from './pages/homePage/Home';
+import SignupForm from './pages/signUp/SignUp';
 import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
 
@@ -16,15 +19,17 @@ function AppRoutes() {
             <Route path="/header" element={<NavBar />}/>
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
+            <Route path="/signup" element={<SignupForm />}/>
+            {/* <Route path="/" element={<Home />}/> */}
             {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
             <Route path="/patient-list" element={<PatientList/>}/>
 
             <Route path="/admin/*" element={
-                <Layout sections={['doctor', 'patient', 'appointment', 'bill', 'medicalRecords']}>
+                <Layout sections={['doctor', 'patient-doc', 'appointment', 'bill', 'medicalRecords']}>
                     <Routes>
                         <Route path="" element={<AdminDashboard />} />
                         <Route path="doctor-list" element={<DoctorList />} />
-                        <Route path="/patient-list" element={<PatientList/>}/>
+                        <Route path="patient-list" element={<PatientList/>}/>
                     </Routes>
                 </Layout>
             } />
@@ -32,7 +37,7 @@ function AppRoutes() {
                 <Layout sections={['patient', 'appointment', 'medicalRecords']}>
                     <Routes>
                         <Route path="" element={<DoctorDashboard/>}/>
-                        <Route path="/patient-list" element={<PatientList/>}/>
+                        <Route path="patient-list" element={<PatientList/>}/>
                     </Routes>
                 </Layout>
             } />
@@ -40,6 +45,11 @@ function AppRoutes() {
                 <Layout sections={['bill', 'appointment']}>
                     <OperatorDashboard />
                 </Layout>
+            } />
+             <Route path="/" element={
+                <Layout2 >
+                    <Home />
+                </Layout2>
             } />
 
         </Routes>

@@ -7,7 +7,6 @@ const PatientList = () => {
     const [patients, setPatients] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [showAddPatientModal, setShowAddPatientModal] = useState(false);
     const [showEditPatientModal, setShowEditPatientModal] = useState(false);
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
@@ -23,7 +22,7 @@ const PatientList = () => {
     useEffect(() => {
         const fetchPatients = async () => {
             try {
-                const response = await axios.get('http://localhost:8081/api/patient');
+                const response = await axios.get('http://localhost:8080/api/patients');
                 if (Array.isArray(response.data)) {
                     setPatients(response.data);
                 } else {
@@ -46,16 +45,6 @@ const PatientList = () => {
         setNewPatient({ ...newPatient, [name]: value });
     };
 
-    const handleAddPatient = () => {
-        setShowAddPatientModal(true);
-        setCurrentPatient(null); // Reset current patient
-        setNewPatient({
-            name: '',
-            address: '',
-            phoneNumber: '',
-            email: ''
-        });
-    };
 
     const handleEditPatient = (patient) => {
         setCurrentPatient(patient);
@@ -71,14 +60,13 @@ const PatientList = () => {
         try {
             if (currentPatient) {
                 // Update existing patient
-                await axios.put(`http://localhost:8081/api/patient/update/${currentPatient.id}`, newPatient);
+                await axios.put(`http://localhost:8080/api/patients/update/${currentPatient.id}`, newPatient);
                 setPatients(patients.map(pat => pat.id === currentPatient.id ? { ...pat, ...newPatient } : pat));
             } else {
                 // Add new patient
-                const response = await axios.post('http://localhost:8081/api/patient/create', newPatient);
+                const response = await axios.post('http://localhost:8080/api/patients/create', newPatient);
                 setPatients([...patients, response.data]);
             }
-            setShowAddPatientModal(false);
             setShowEditPatientModal(false);
             setShowConfirmationModal(false); // Close the confirmation modal
             window.location.reload();
@@ -89,7 +77,7 @@ const PatientList = () => {
 
     const handleDeletePatient = async () => {
         try {
-            await axios.delete(`http://localhost:8081/api/patient/delete/${patientToDelete}`);
+            await axios.delete(`http://localhost:8080/api/patients/delete/${patientToDelete}`);
             setPatients(patients.filter(pat => pat.id !== patientToDelete));
             setShowDeleteConfirmationModal(false);
         } catch (error) {
@@ -110,17 +98,7 @@ const PatientList = () => {
     return (
         <div>
             <div className="row">
-                <div className="col-6">
-                    <h1 className="header-name">Patients List</h1>
-                </div>
-                <div className="col-6">
-                    <button
-                        className="addpatient-btn btn btn-outline-primary"
-                        onClick={handleAddPatient}
-                    >
-                        Add Patient
-                    </button>
-                </div>
+                <h1 className="header-name">Patients List</h1>
             </div>
             <table className="table table-bordered patient-tbl">
                 <thead>
@@ -161,7 +139,7 @@ const PatientList = () => {
             </table>
 
             {/* Modal for Adding/Editing a Patient */}
-            {(showAddPatientModal || showEditPatientModal) && (
+            {(showEditPatientModal) && (
                 <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -170,7 +148,7 @@ const PatientList = () => {
                                 <button
                                     type="button"
                                     className="close"
-                                    onClick={() => { setShowAddPatientModal(false); setShowEditPatientModal(false); }}
+                                    onClick={() => { setShowEditPatientModal(false); }}
                                 >
                                     &times;
                                 </button>
@@ -221,7 +199,7 @@ const PatientList = () => {
                                 <button
                                     type="button"
                                     className="btn btn-secondary"
-                                    onClick={() => { setShowAddPatientModal(false); setShowEditPatientModal(false); }}
+                                    onClick={() => { setShowEditPatientModal(false); }}
                                 >
                                     Close
                                 </button>
