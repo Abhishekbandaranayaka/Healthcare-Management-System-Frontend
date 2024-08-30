@@ -14,6 +14,7 @@ import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
 import AppointmentList from "./components/AppointmentList/AppointmentList";
 import FAQ from "./pages/Faq/faq";
+import Details from "./pages/patientDetails/patientDetails";
 
 function AppRoutes() {
     return (
@@ -57,6 +58,11 @@ function AppRoutes() {
              <Route path="/" element={
                 <Layout2 >
                     <Home />
+                </Layout2>
+            } />
+             <Route path="/details" element={
+                <Layout2 >
+                    <Details />
                 </Layout2>
             } />
             <Route path="/faq" element={
