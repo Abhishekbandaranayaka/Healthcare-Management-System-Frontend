@@ -1,26 +1,26 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css';
 
 const NavBar = () => {
-    return(
+    return (
         <header>
             {/* Upper line: Logo, Search field, Social media icons */}
             <div className="upper-navbar d-flex justify-content-between align-items-center p-2 bg-light">
                 <div className="logo">
                     <Link to="/">
-                        <img src="/assets/logo.png" alt="Healthcare System"/>
+                        <img src="/assets/logo.png" alt="Healthcare System" className="img-fluid"/>
                     </Link>
                 </div>
-                <div className="search-bar " >
-                    <input type="text" placeholder="     Search..." className="form-control rounded-pill" />
+                <div className="search-bar d-flex justify-content-center align-items-center">
+                    <input type="text" placeholder="Search..." className="form-control rounded-pill" />
                 </div>
-                <div className="social-icons px-5">
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="/assets/fb.png" alt="Facebook"/></a>
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="/assets/insta.png" alt="Instagram"/></a>
-                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src="/assets/twitter.png" alt="Twitter"/></a>
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><img src="/assets/linkden.png" alt="Linkden"/></a>
+                <div className="social-icons d-flex align-items-center">
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="/assets/fb.png" alt="Facebook" className="img-fluid"/></a>
+                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="/assets/insta.png" alt="Instagram" className="img-fluid"/></a>
+                    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src="/assets/twitter.png" alt="Twitter" className="img-fluid"/></a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"><img src="/assets/linkden.png" alt="LinkedIn" className="img-fluid"/></a>
                 </div>
             </div>
 
@@ -50,14 +50,14 @@ const NavBar = () => {
                         </ul>
                         <div className="notification-icon">
                             <Link to="/notifications">
-                                <img src="/assets/notification.png" alt="Healthcare System"/>
+                                <img src="/assets/notification.png" alt="Notifications" className="img-fluid"/>
                             </Link>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
-    )
+    );
 };
 
 export default NavBar;
