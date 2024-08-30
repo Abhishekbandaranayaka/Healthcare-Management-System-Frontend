@@ -9,6 +9,7 @@ import DoctorDashboard from "./module/doctor/doctordashboard/DoctorDashboard";
 import OperatorDashboard from "./module/operators/operatordashboard/OperatorDashboard";
 import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
+import AppointmentList from "./components/AppointmentList/AppointmentList";
 
 function AppRoutes() {
     return (
@@ -16,15 +17,17 @@ function AppRoutes() {
             <Route path="/header" element={<NavBar />}/>
             <Route path="/footer" element={<Footer />}/>
             <Route path="/sidebar" element={<SideBar />}/>
-            {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
+            <Route path="/doctor-list" element={<DoctorList/>}/>
             <Route path="/patient-list" element={<PatientList/>}/>
+            <Route path="/appointment-list" element={<AppointmentList/>}/>
 
             <Route path="/admin/*" element={
-                <Layout sections={['doctor', 'patient-doc', 'appointment', 'bill', 'medicalRecords']}>
+                <Layout sections={['doctor', 'patient-admin', 'appointment-admin', 'bill', 'medicalRecords']}>
                     <Routes>
                         <Route path="" element={<AdminDashboard />} />
                         <Route path="doctor-list" element={<DoctorList />} />
                         <Route path="patient-list" element={<PatientList/>}/>
+                        <Route path="appointment-list" element={<AppointmentList/>}/>
                     </Routes>
                 </Layout>
             } />
@@ -36,9 +39,12 @@ function AppRoutes() {
                     </Routes>
                 </Layout>
             } />
-            <Route path="/operator" element={
-                <Layout sections={['bill', 'appointment']}>
-                    <OperatorDashboard />
+            <Route path="/operator/*" element={
+                <Layout sections={['bill', 'appointment-operator']}>
+                    <Routes>
+                        <Route path=" " element={<OperatorDashboard />}/>
+                        <Route path="appointment-list" element={<AppointmentList/>}/>
+                    </Routes>
                 </Layout>
             } />
 
