@@ -13,6 +13,7 @@ function SideBar({ sections }) {
     return (
         <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{ width: '250px', height: '100vh' }}>
             <ul className="nav nav-pills flex-column mb-auto">
+
                 {/* Doctor Section */}
                 {sections.includes('doctor') && (
                     <li className="nav-item">
@@ -26,7 +27,8 @@ function SideBar({ sections }) {
                     </li>
                 )}
 
-                {sections.includes('patient-doc') && (
+                {/* Patient Section */}
+                {sections.includes('patient-admin') && (
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'patient' ? 'active' : ''}`}
@@ -38,7 +40,6 @@ function SideBar({ sections }) {
                         </Link>
                     </li>
                 )}
-
                 {sections.includes('patient') && (
                     <li className="nav-item">
                         <Link
@@ -53,21 +54,28 @@ function SideBar({ sections }) {
                 )}
 
                 {/* Appointment Section */}
-                {sections.includes('appointment') && (
+                {sections.includes('appointment-admin') && (
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'appointment' ? 'active' : ''}`}
-                            to="#"
+                            to="/admin/appointment-list"
                             role="button"
                             onClick={() => handleSectionClick('appointment')}
                         >
                             Appointment
                         </Link>
-                        <div className={`collapse ${activeSection === 'appointment' ? 'show' : ''}`} id="appointmentSubMenu">
-                            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><Link to="/appointment-details" className="nav-link">Appointment Details</Link></li>
-                            </ul>
-                        </div>
+                    </li>
+                )}
+                {sections.includes('appointment-operator') && (
+                    <li className="nav-item">
+                        <Link
+                            className={`nav-link ${activeSection === 'appointment' ? 'active' : ''}`}
+                            to="/operator/appointment-list"
+                            role="button"
+                            onClick={() => handleSectionClick('appointment')}
+                        >
+                            Appointment
+                        </Link>
                     </li>
                 )}
 
