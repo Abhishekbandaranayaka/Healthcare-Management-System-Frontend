@@ -12,6 +12,7 @@ import Home from './pages/homePage/Home';
 import SignupForm from './pages/signUp/SignUp';
 import DoctorList from "./components/DoctorList/DoctorList";
 import PatientList from "./components/PatientList/PatientList";
+import Login from './pages/login/Login';
 import AppointmentList from "./components/AppointmentList/AppointmentList";
 import FAQ from "./pages/Faq/faq";
 
@@ -23,6 +24,7 @@ function AppRoutes() {
             <Route path="/sidebar" element={<SideBar />}/>
             <Route path="/doctor-list" element={<DoctorList/>}/>
             <Route path="/signup" element={<SignupForm />}/>
+            <Route path="/login" element={<Login />}/>
             {/* <Route path="/" element={<Home />}/> */}
             {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
             <Route path="/patient-list" element={<PatientList/>}/>
