@@ -26,8 +26,6 @@ function AppRoutes() {
             <Route path="/signup" element={<SignupForm />}/>
             <Route path="/" element={<Home />}/>
             <Route path="/login" element={<Login />}/>
-            {/* <Route path="/" element={<Home />}/> */}
-            {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
             <Route path="/patient-list" element={<PatientList/>}/>
             <Route path="/appointment-list" element={<AppointmentList/>}/>
             <Route path="/faq" element={<FAQ/>}/>
