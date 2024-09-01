@@ -24,11 +24,14 @@ function AppRoutes() {
             <Route path="/sidebar" element={<SideBar />}/>
             <Route path="/doctor-list" element={<DoctorList/>}/>
             <Route path="/signup" element={<SignupForm />}/>
+            <Route path="/" element={<Home />}/>
             <Route path="/login" element={<Login />}/>
             {/* <Route path="/" element={<Home />}/> */}
             {/*<Route path="/doctor-list" element={<DoctorList/>}/>*/}
             <Route path="/patient-list" element={<PatientList/>}/>
             <Route path="/appointment-list" element={<AppointmentList/>}/>
+            <Route path="/faq" element={<FAQ/>}/>
+
 
             <Route path="/admin/*" element={
                 <Layout sections={['doctor', 'patient-admin', 'appointment-admin', 'bill', 'medicalRecords']}>
@@ -56,15 +59,17 @@ function AppRoutes() {
                     </Routes>
                 </Layout>
             } />
+
+
              <Route path="/" element={
                 <Layout2 >
                     <Home />
                 </Layout2>
             } />
             <Route path="/faq" element={
-                <Layout sections={['bill', 'appointment']}>
+                <Layout2>
                     <FAQ />
-                </Layout>
+                </Layout2>
             } />
 
 
