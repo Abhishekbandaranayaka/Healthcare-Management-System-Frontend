@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode'; // Import jwt-decode to decode the JWT token
 import backgroundImage from '../../assets/images/BG.jpg'; // Update the path if needed
 
 function Login() {
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
   const styles = {
     container: {
       minHeight: '100vh',
@@ -85,56 +91,104 @@ function Login() {
     },
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      // Call your backend API for login
+      const response = await fetch('http://localhost:9000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ login, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const { token } = data;
+
+        // Save the token in local storage
+        localStorage.setItem('token', token);
+
+        // Decode the JWT token to extract user role
+        const decodedToken = jwtDecode(token);
+        const userRole = decodedToken.role;
+
+        // Redirect based on role
+        if (userRole === 'ADMIN') {
+          navigate('/admin/*');
+        } else if (userRole === 'OPERATOR') {
+          navigate('/operator/*');
+        } else {
+          navigate('/'); // Redirect to the home page or a default page
+        }
+      } else {
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  };
+
+  const handleCancel = () => {
+    // Add your cancel logic here (e.g., reset form, navigate back, etc.)
+    console.log('Cancel clicked');
+  };
+
   return (
-    <div style={styles.container}>
-      <div style={styles.formContainer}>
-        <h3 style={styles.header}>Login</h3>
-        <Form>
-          <Form.Group controlId="formUsername" className="mb-3">
-            <Form.Label>User Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your username"
-              style={styles.textField}
-              className="text-field"
-            />
-          </Form.Group>
+      <div style={styles.container}>
+        <div style={styles.formContainer}>
+          <h3 style={styles.header}>Login</h3>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formUsername" className="mb-3">
+              <Form.Label>User Name</Form.Label>
+              <Form.Control
+                  type="text"
+                  placeholder="Enter your username"
+                  style={styles.textField}
+                  value={login}
+                  onChange={(e) => setLogin(e.target.value)}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="formPassword" className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter your password"
-              style={styles.textField}
-              className="text-field"
-            />
-            <a href="#" style={styles.forgotPassword}>Forgot Password?</a> {/* Forgot Password link */}
-          </Form.Group>
+            <Form.Group controlId="formPassword" className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                  type="password"
+                  placeholder="Enter your password"
+                  style={styles.textField}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+              />
+              <a href="#" style={styles.forgotPassword}>Forgot Password?</a> {/* Forgot Password link */}
+            </Form.Group>
 
-          <div style={styles.bottomSpacing}></div>
+            <div style={styles.bottomSpacing}></div>
 
-          <div style={styles.buttonGroup}>
-            <Button
-              variant="primary"
-              type="submit"
-              style={{ ...styles.button, ...styles.buttonSpacing }}
-              className="button-hover"
-            >
-              Ok
-            </Button>
-            <Button
-              variant="secondary"
-              type="button"
-              style={{ ...styles.button, ...styles.buttonSpacing }}
-              className="button-hover"
-            >
-              Cancel
-            </Button>
-          </div>
-        </Form>
-      </div>
+            <div style={styles.buttonGroup}>
+              <Button
+                  variant="primary"
+                  type="submit"
+                  style={{ ...styles.button, ...styles.buttonSpacing }}
+                  className="button-hover"
+              >
+                Ok
+              </Button>
+              <Button
+                  variant="secondary"
+                  type="button"
+                  style={{ ...styles.button, ...styles.buttonSpacing }}
+                  onClick={handleCancel}
+                  className="button-hover"
+              >
+                Cancel
+              </Button>
+            </div>
+          </Form>
+        </div>
 
-      <style jsx>{`
+        <style jsx>{`
         .text-field::placeholder {
           color: rgba(0, 0, 0, 0.5);
         }
@@ -146,7 +200,7 @@ function Login() {
           cursor: pointer;
         }
       `}</style>
-    </div>
+      </div>
   );
 }
 
