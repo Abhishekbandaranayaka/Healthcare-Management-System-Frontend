@@ -120,6 +120,8 @@ function Login() {
           navigate('/admin/*');
         } else if (userRole === 'OPERATOR') {
           navigate('/operator/*');
+        }else if (userRole === 'DOCTOR') {
+          navigate('/doctor/*');
         } else {
           navigate('/'); // Redirect to the home page or a default page
         }
