@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Booking.css';
 import NavBar from '../../components/NavBar/NavBar';
@@ -9,15 +9,16 @@ const AppointmentBooking = () => {
     const [doctor, setDoctor] = useState('');
     const [specialization, setSpecialization] = useState('');
     const [date, setDate] = useState('');
-    const navigate = useNavigate(); // useNavigate hook
+    const navigate = useNavigate(); 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Logic for form submission or API call can be added here
-        navigate('/search-results'); // Use navigate instead of history.push
+        // Navigation of the list of doctors, user searched
+        navigate('/search results'); 
     };
 
     return (
+        //Dummy doctorlist & specializations has added, before connect with database
         <div id="root">
               <NavBar />  
         <div className="appointment-booking-container">
