@@ -17,6 +17,7 @@ import AppointmentList from "./components/AppointmentList/AppointmentList";
 import FAQ from "./pages/Faq/faq";
 import SignUpMember from "./pages/signUpMember/SignUpMember";
 import AppointmentBooking from './pages/booking/Booking';
+import SearchResults from './pages/search Results/searchResults';
 
 function AppRoutes() {
     return (
@@ -33,6 +34,7 @@ function AppRoutes() {
             <Route path="/faq" element={<FAQ/>}/>
             <Route path="/signup-member" element={<SignUpMember/>}/>
             <Route path="/booking" element={<AppointmentBooking />} />
+            <Route path="/search results" element={<SearchResults />} />
 
 
             <Route path="/admin/*" element={
