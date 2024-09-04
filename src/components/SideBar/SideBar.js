@@ -101,11 +101,24 @@ function SideBar({ sections }) {
                 )}
 
                 {/* Medical Records Section */}
-                {sections.includes('medicalRecords') && (
+                {sections.includes('medicalRecords-admin') && (
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'medicalRecords' ? 'active' : ''}`}
                             to="/admin/medical-records"
+                            role="button"
+                            onClick={() => handleSectionClick('medicalRecords')}
+                        >
+                            Medical Records
+                        </Link>
+                    </li>
+                )}
+
+                {sections.includes('medicalRecords-doctor') && (
+                    <li className="nav-item">
+                        <Link
+                            className={`nav-link ${activeSection === 'medicalRecords' ? 'active' : ''}`}
+                            to="/doctor/medical-records"
                             role="button"
                             onClick={() => handleSectionClick('medicalRecords')}
                         >
