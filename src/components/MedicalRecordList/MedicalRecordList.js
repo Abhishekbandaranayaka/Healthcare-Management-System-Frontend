@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './MedicalRecordList.css'; // Ensure this CSS file exists
+import './MedicalRecordList.css';
 
 const MedicalRecordList = () => {
     const [records, setRecords] = useState([]);
@@ -18,6 +18,7 @@ const MedicalRecordList = () => {
         diagnosis: '',
         treatments: ''
     });
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchRecords = async () => {
@@ -52,34 +53,23 @@ const MedicalRecordList = () => {
     };
 
     const handleSubmit = () => {
-        setShowConfirmationModal(true); // Show the confirmation modal
+        setShowConfirmationModal(true);
     };
 
     const handleConfirm = async () => {
         try {
             if (currentRecord) {
-                // Update existing record
-                await axios.put(`http://localhost:8084/api/medical-records/update/${currentRecord.recordId}`, newRecord);
+                await axios.put(`http://localhost:8084/api/medical_records/update/${currentRecord.recordId}`, newRecord);
                 setRecords(records.map(rec => rec.recordId === currentRecord.recordId ? { ...rec, ...newRecord } : rec));
             } else {
-                // Add new record
-                const response = await axios.post('http://localhost:8084/api/medical-records/create', newRecord);
+                const response = await axios.post('http://localhost:8084/api/medical_records/create', newRecord);
                 setRecords([...records, response.data]);
             }
             setShowEditRecordModal(false);
-            setShowConfirmationModal(false); // Close the confirmation modal
+            setShowConfirmationModal(false);
+            window.location.reload();
         } catch (error) {
             console.error('Error saving record:', error);
-        }
-    };
-
-    const handleDeleteRecord = async () => {
-        try {
-            await axios.delete(`http://localhost:8084/api/medical-records/delete/${recordToDelete}`);
-            setRecords(records.filter(rec => rec.recordId !== recordToDelete));
-            setShowDeleteConfirmationModal(false);
-        } catch (error) {
-            console.error('Error deleting record:', error);
         }
     };
 
@@ -91,12 +81,22 @@ const MedicalRecordList = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
-    const sortedRecords = [...records].sort((a, b) => a.recordId.localeCompare(b.recordId));
+    // Filter records based on search query
+    const filteredRecords = records.filter(record =>
+        record.patientId.toString().includes(searchQuery)
+    );
 
     return (
-        <div>
-            <div className="row">
-                <h1 className="header-name">Medical Records List</h1>
+        <div className="container">
+            <div className="row mb-3">
+                <h1 className="header-n">Medical Records List</h1>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search by Patient ID"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                />
             </div>
             <table className="table table-bordered medical-record-tbl">
                 <thead>
@@ -109,7 +109,7 @@ const MedicalRecordList = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {sortedRecords.map(record => (
+                {filteredRecords.map(record => (
                     <tr key={record.recordId}>
                         <td>{record.patientId}</td>
                         <td>{record.medicalHistory}</td>
@@ -121,12 +121,6 @@ const MedicalRecordList = () => {
                                 alt="edit"
                                 className="img-fluid edit"
                                 onClick={() => handleEditRecord(record)}
-                            />
-                            <img
-                                src="/assets/delete.png"
-                                alt="delete"
-                                className="img-fluid delete"
-                                onClick={() => confirmDelete(record.recordId)}
                             />
                         </td>
                     </tr>
@@ -144,7 +138,7 @@ const MedicalRecordList = () => {
                                 <button
                                     type="button"
                                     className="close"
-                                    onClick={() => { setShowEditRecordModal(false); }}
+                                    onClick={() => setShowEditRecordModal(false)}
                                 >
                                     &times;
                                 </button>
@@ -193,7 +187,7 @@ const MedicalRecordList = () => {
                                 <button
                                     type="button"
                                     className="btn btn-secondary"
-                                    onClick={() => { setShowEditRecordModal(false); }}
+                                    onClick={() => setShowEditRecordModal(false)}
                                 >
                                     Close
                                 </button>
@@ -240,45 +234,6 @@ const MedicalRecordList = () => {
                                     type="button"
                                     className="btn btn-primary"
                                     onClick={handleConfirm}
-                                >
-                                    Yes
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* Delete Confirmation Modal */}
-            {showDeleteConfirmationModal && (
-                <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Confirm Deletion</h5>
-                                <button
-                                    type="button"
-                                    className="close"
-                                    onClick={() => setShowDeleteConfirmationModal(false)}
-                                >
-                                    &times;
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <p>Are you sure you want to delete this record?</p>
-                            </div>
-                            <div className="modal-footer">
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    onClick={() => setShowDeleteConfirmationModal(false)}
-                                >
-                                    No
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn btn-danger"
-                                    onClick={handleDeleteRecord}
                                 >
                                     Yes
                                 </button>
