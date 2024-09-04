@@ -84,19 +84,13 @@ function SideBar({ sections }) {
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'bill' ? 'active' : ''}`}
-                            to="#"
+                            to="/admin/bill-list"
                             role="button"
                             onClick={() => handleSectionClick('bill')}
                         >
                             Bill
                         </Link>
-                        <div className={`collapse ${activeSection === 'bill' ? 'show' : ''}`} id="billSubMenu">
-                            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><Link to="/open-bill" className="nav-link">Open Bill</Link></li>
-                                <li><Link to="/not-paid-bill" className="nav-link">Not Paid Bill</Link></li>
-                                <li><Link to="/all-bills" className="nav-link">All Bills</Link></li>
-                            </ul>
-                        </div>
+
                     </li>
                 )}
 

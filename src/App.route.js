@@ -19,7 +19,7 @@ import SignUpMember from "./pages/signUpMember/SignUpMember";
 import MedicalRecordList from "./components/MedicalRecordList/MedicalRecordList";
 import AppointmentBooking from './pages/booking/Booking';
 import SearchResults from './pages/search Results/searchResults';
-
+import BillList from "./components/BillList/BillList";
 function AppRoutes() {
     return (
         <Routes>
@@ -37,6 +37,7 @@ function AppRoutes() {
             <Route path="/medical-records" element={<MedicalRecordList/>}/>
             <Route path="/booking" element={<AppointmentBooking />} />
             <Route path="/search results" element={<SearchResults />} />
+            <Route path="/bill-list" element={<BillList/>} />
 
 
 
@@ -48,6 +49,7 @@ function AppRoutes() {
                         <Route path="patient-list" element={<PatientList/>}/>
                         <Route path="appointment-list" element={<AppointmentList/>}/>
                         <Route path="medical-records" element={<MedicalRecordList/>}/>
+                        <Route path="bill-list" element={<BillList/>}/>
                     </Routes>
                 </Layout>
             } />
