@@ -15,10 +15,13 @@ import PatientList from "./components/PatientList/PatientList";
 import Login from './pages/login/Login';
 import AppointmentList from "./components/AppointmentList/AppointmentList";
 import FAQ from "./pages/Faq/faq";
+import Details from "./pages/patientDetails/patientDetails";
+import DoctorProfileWithBookings from "./pages/booking-information/BookingInformation";
 import SignUpMember from "./pages/signUpMember/SignUpMember";
 import MedicalRecordList from "./components/MedicalRecordList/MedicalRecordList";
 import AppointmentBooking from './pages/booking/Booking';
 import SearchResults from './pages/search Results/searchResults';
+
 
 function AppRoutes() {
     return (
@@ -72,6 +75,16 @@ function AppRoutes() {
              <Route path="/" element={
                 <Layout2 >
                     <Home />
+                </Layout2>
+            } />
+             <Route path="/details" element={
+                <Layout2 >
+                    <Details />
+                </Layout2>
+            } />
+            <Route path="/bookinginformation" element={
+                <Layout2 >
+                    <DoctorProfileWithBookings />
                 </Layout2>
             } />
             <Route path="/faq" element={
