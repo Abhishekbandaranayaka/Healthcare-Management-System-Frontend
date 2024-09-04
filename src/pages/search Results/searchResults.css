@@ -1,19 +1,19 @@
 .search-results-container {
     display: flex;
     height: max-content;
-    justify-content: flex-start; /* Align items to the start of the flex container */
-    align-items: flex-start; /* Align items along the cross-axis (vertically) */
-    gap: 20px; /* Space between filter and results sections */
-    margin: 20px; /* Add some margin around the container */
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px;
     border-radius: 20px;
+    
 }
 
 .filter-section {
     flex: 1;
-    padding:20px;
+    padding: 20px;
     background-color: #d1e7dd;
     height: max-content;
-
 }
 
 .results-section {
@@ -22,24 +22,32 @@
     flex-wrap: wrap;
     padding: 20px;
     background-color: #f8f9fa;
-    overflow-y: auto; 
-
+    overflow-y: auto;
 }
 
 .result-card {
     width: 30%;
     margin: 10px;
     padding: 15px;
-    background-color: #e2e3e5;
+    background-color: #c0c1c4;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    color: black;
 }
+
+.result-card:hover {
+    background-color: #969696; /* Background color on hover */
+  }
 
 .result-card-content span {
     display: block;
     font-size: 16px;
-    font-family: 'Calibri', sans-serif; /* Set Calibri as the font for all text */
+    font-family: 'Calibri', sans-serif;
+   
 }
