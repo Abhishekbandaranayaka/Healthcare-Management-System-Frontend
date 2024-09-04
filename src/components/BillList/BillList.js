@@ -22,7 +22,7 @@ const BillList = () => {
     useEffect(() => {
         const fetchBills = async () => {
             try {
-                const response = await axios.get('http://localhost:8082/api/bills');
+                const response = await axios.get('http://localhost:8085/api/billing/bills'); // Adjusted URL
                 if (Array.isArray(response.data)) {
                     setBills(response.data);
                 } else {
@@ -39,6 +39,7 @@ const BillList = () => {
 
         fetchBills();
     }, []);
+
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         setNewBill({...newBill, [name]: value});
@@ -54,6 +55,7 @@ const BillList = () => {
         });
         setShowEditBillModal(true);
     };
+
     const handleSubmit = () => {
         setShowConfirmationModal(true); // Show the confirmation modal
     };
@@ -62,11 +64,11 @@ const BillList = () => {
         try {
             if (currentBill) {
                 // Update existing bill
-                await axios.put(`http://localhost:8082/api/bills/update/${currentBill.id}`, newBill);
+                await axios.put(`http://localhost:8084/api/billing/${currentBill.id}`, newBill);
                 setBills(bills.map(bill => bill.id === currentBill.id ? {...bill, ...newBill} : bill));
             } else {
                 // Add new bill
-                const response = await axios.post('http://localhost:8082/api/bills/create', newBill);
+                const response = await axios.post('http://localhost:8084/api/billing/create', newBill);
                 setBills([...bills, response.data]);
             }
             setShowEditBillModal(false);
@@ -79,7 +81,7 @@ const BillList = () => {
 
     const handleDeleteBill = async () => {
         try {
-            await axios.delete(`http://localhost:8082/api/bills/delete/${billToDelete}`);
+            await axios.delete(`http://localhost:8084/api/billing/${billToDelete}`);
             setBills(bills.filter(bill => bill.id !== billToDelete));
             setShowDeleteConfirmationModal(false);
         } catch (error) {
@@ -91,13 +93,14 @@ const BillList = () => {
         setBillToDelete(id);
         setShowDeleteConfirmationModal(true);
     };
+
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
     const sortedBills = [...bills].sort((a, b) => a.id - b.id);
 
     return (
-        <div>
+        <div className="container">
             <div className="row">
                 <h1 className="header-name">Bills List</h1>
             </div>
@@ -220,4 +223,5 @@ const BillList = () => {
         </div>
     );
 };
+
 export default BillList;
