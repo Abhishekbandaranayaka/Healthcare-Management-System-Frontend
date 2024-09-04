@@ -15,6 +15,7 @@ import PatientList from "./components/PatientList/PatientList";
 import AppointmentList from "./components/AppointmentList/AppointmentList";
 import FAQ from "./pages/Faq/faq";
 import Details from "./pages/patientDetails/patientDetails";
+import DoctorProfileWithBookings from "./pages/booking-information/BookingInformation";
 
 function AppRoutes() {
     return (
@@ -63,6 +64,11 @@ function AppRoutes() {
              <Route path="/details" element={
                 <Layout2 >
                     <Details />
+                </Layout2>
+            } />
+            <Route path="/bookinginformation" element={
+                <Layout2 >
+                    <DoctorProfileWithBookings />
                 </Layout2>
             } />
             <Route path="/faq" element={
