@@ -8,6 +8,9 @@
     color: #007bff;
 
 }
+.search-bar{
+    margin-top: -10%;
+}
 .tbl-head{
     font-weight: normal;
     font-family: Inter;

@@ -88,15 +88,19 @@ const MedicalRecordList = () => {
 
     return (
         <div className="container">
-            <div className="row mb-3">
-                <h1 className="header-n">Medical Records List</h1>
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Search by Patient ID"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                />
+            <div className="row">
+                <div>
+                    <h1 className="header-n">Medical Records List</h1>
+                </div>
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Search by Patient ID"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </div>
             </div>
             <table className="table table-bordered medical-record-tbl">
                 <thead>
