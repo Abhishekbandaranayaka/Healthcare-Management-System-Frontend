@@ -75,9 +75,10 @@ function Login() {
     forgotPassword: {
       display: 'block',
       textAlign: 'right',
-      marginBottom: '15px',
+      marginTop: '10px', // Added margin-top
+      marginBottom: '20px', // Added margin-bottom
       textDecoration: 'none',
-      color: '#007BFF', // Color of the link
+      color: 'rgba(0, 0, 0, 0.56)', // Color with 56% opacity
       fontSize: '14px',
     },
     bottomSpacing: {
