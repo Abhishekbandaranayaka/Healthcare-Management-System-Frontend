@@ -1,0 +1,77 @@
+.appointment-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 1400px;
+    margin-left: 0%;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+
+  .search-input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-right: 1400px;
+    border-radius: 5px;
+    margin-left: 0%;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .appointment-table {
+    width: 100%;
+    border-collapse: initial;
+}
+
+.appointment-table td {
+    padding: 5px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.appointment-table th {
+  border-radius: 8px;
+    background-color:#7ea9ba;
+    font-weight:500,lighter;
+    color: black;
+    font-size: 20px;
+    color:#474747;
+    text-align: left, 3px;
+}
+
+.appointment-table td {
+  border-radius: 8px;
+    background-color: #d9d9d9;
+}
+
+.appointment-table tr:nth-child(even) td {
+    background-color: #d9d9d9;
+}
+
+.appointment-table tr:hover td {
+    background-color: #d9d9d9;
+}
+
+.appointment-table td.paid {
+    color: green;
+    font-weight: bold;
+}
+
+.appointment-table td.unpaid {
+    color: red;
+    font-weight: bold;
+}
+
+.appointment-table td:last-child {
+    text-align: center;
+}
+  

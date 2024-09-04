@@ -1,0 +1,48 @@
+.modal-dialog-centered {
+    max-width: 800px;
+}
+
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: none;
+    text-align: center;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-body .col-form-label {
+    font-weight: 600;
+    color: black;
+    background-color: #adadad;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.modal-body .form-control {
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    max-width: 470px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-footer {
+    border-top: none;
+    text-align: center;
+}
+
+.modal-footer .btn {
+    border-radius: 20px;
+    width: 100px;
+    border-radius: 5px;
+}
