@@ -105,17 +105,12 @@ function SideBar({ sections }) {
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'medicalRecords' ? 'active' : ''}`}
-                            to="#"
+                            to="/admin/medical-records"
                             role="button"
                             onClick={() => handleSectionClick('medicalRecords')}
                         >
                             Medical Records
                         </Link>
-                        <div className={`collapse ${activeSection === 'medicalRecords' ? 'show' : ''}`} id="medicalRecordsSubMenu">
-                            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><Link to="/all-medical-records" className="nav-link">All Medical Records</Link></li>
-                            </ul>
-                        </div>
                     </li>
                 )}
             </ul>
