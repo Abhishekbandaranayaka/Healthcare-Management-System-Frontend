@@ -16,6 +16,7 @@ import Login from './pages/login/Login';
 import AppointmentList from "./components/AppointmentList/AppointmentList";
 import FAQ from "./pages/Faq/faq";
 import SignUpMember from "./pages/signUpMember/SignUpMember";
+import MedicalRecordList from "./components/MedicalRecordList/MedicalRecordList";
 import AppointmentBooking from './pages/booking/Booking';
 import SearchResults from './pages/search Results/searchResults';
 
@@ -33,8 +34,10 @@ function AppRoutes() {
             <Route path="/appointment-list" element={<AppointmentList/>}/>
             <Route path="/faq" element={<FAQ/>}/>
             <Route path="/signup-member" element={<SignUpMember/>}/>
+            <Route path="/medical-records" element={<MedicalRecordList/>}/>
             <Route path="/booking" element={<AppointmentBooking />} />
             <Route path="/search results" element={<SearchResults />} />
+
 
 
             <Route path="/admin/*" element={
@@ -44,6 +47,7 @@ function AppRoutes() {
                         <Route path="doctor-list" element={<DoctorList />} />
                         <Route path="patient-list" element={<PatientList/>}/>
                         <Route path="appointment-list" element={<AppointmentList/>}/>
+                        <Route path="medical-records" element={<MedicalRecordList/>}/>
                     </Routes>
                 </Layout>
             } />
