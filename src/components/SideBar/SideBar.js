@@ -84,28 +84,35 @@ function SideBar({ sections }) {
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'bill' ? 'active' : ''}`}
-                            to="#"
+                            to="/admin/bill-list"
                             role="button"
                             onClick={() => handleSectionClick('bill')}
                         >
                             Bill
                         </Link>
-                        <div className={`collapse ${activeSection === 'bill' ? 'show' : ''}`} id="billSubMenu">
-                            <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><Link to="/open-bill" className="nav-link">Open Bill</Link></li>
-                                <li><Link to="/not-paid-bill" className="nav-link">Not Paid Bill</Link></li>
-                                <li><Link to="/all-bills" className="nav-link">All Bills</Link></li>
-                            </ul>
-                        </div>
+
                     </li>
                 )}
 
                 {/* Medical Records Section */}
-                {sections.includes('medicalRecords') && (
+                {sections.includes('medicalRecords-admin') && (
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'medicalRecords' ? 'active' : ''}`}
                             to="/admin/medical-records"
+                            role="button"
+                            onClick={() => handleSectionClick('medicalRecords')}
+                        >
+                            Medical Records
+                        </Link>
+                    </li>
+                )}
+
+                {sections.includes('medicalRecords-doctor') && (
+                    <li className="nav-item">
+                        <Link
+                            className={`nav-link ${activeSection === 'medicalRecords' ? 'active' : ''}`}
+                            to="/doctor/medical-records"
                             role="button"
                             onClick={() => handleSectionClick('medicalRecords')}
                         >
