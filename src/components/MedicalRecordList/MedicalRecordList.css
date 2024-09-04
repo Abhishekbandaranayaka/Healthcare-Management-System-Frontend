@@ -1,18 +1,15 @@
-.header-name{
+.container{
+    width: 75%;
+}
+.header-n{
     font-weight: bold;
     font-family: Inter;
     font-size: 25px;
     color: #007bff;
-    margin-left: 25%;
 
 }
-.adddoctor-btn{
-    font-weight: bold;
-    font-family: Inter;
-    font-size: 15px;
-    color: #007bff;
-    margin-left: 75%;
-    margin-top: -2%;
+.search-bar{
+    margin-top: -10%;
 }
 .tbl-head{
     font-weight: normal;

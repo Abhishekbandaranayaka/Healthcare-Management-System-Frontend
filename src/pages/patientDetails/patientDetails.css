@@ -1,0 +1,117 @@
+.container {
+    padding: 0; 
+  }
+  .details-row {
+    display: flex;
+    align-items: stretch; /* Ensure both cards stretch to the same height */
+    flex-wrap: wrap;
+  }
+  
+  .channel-details-card,
+  .patient-details-card {
+    flex: 1; /* Make both cards take equal space */
+    height: 100%; /* Ensure both elements take the full height of their container */
+    margin-bottom: 20px;
+  }
+
+.channel-details-card {
+    background-color: #B5D1D4;
+    border-radius: 15px;
+  }
+
+.patient-details-card{
+    background-color:#FCFCFC;  
+    border-color: #0000004D; 
+    border-width: 1px;  
+    border-style: solid; 
+    border-radius:  25px;
+}  
+@media (max-width: 767px) {
+    .details-row {
+      flex-direction: column; /* Stack cards vertically on small screens */
+    }
+  
+    .channel-details-card,
+    .patient-details-card {
+      width: 100%; /* Ensure full width on smaller screens */
+      height: auto; /* Let height adjust naturally */
+    }
+}
+
+.channeldetail{
+    color: #00000099;
+    text-shadow: 0px 4px 4px #00000040;
+    font-family: 'Calibri', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+}
+.channel-details-card  strong{
+    font-family: 'Calibri', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color:#00000099;
+}
+
+.left-padding{
+    padding-left: 6%;
+    font-family: 'Calibri', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color:#00000099;
+}
+.patient-details{
+    padding-left: 5%;
+    color: #00000099;
+    text-shadow: 0px 4px 4px #00000040;
+    font-family: 'Calibri', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.lable{
+    color:#00000099;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-family: 'Calibri', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+.controll{
+    font-family: 'Calibri', sans-serif;
+    font-size: 20px;
+    font-weight: 400; 
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 10px;
+    border-color: #00000033;
+    border-width: 1px;
+}
+.controll::placeholder {
+    color: #0000004D
+}
+.button {
+  background: linear-gradient(to top,#7EA9BA, #7EA9BA80,#7EA9BA);
+  border-radius: 25px; 
+  height: 6.5%;
+  width: 21%;
+  color: #0000009E ;
+  font-family: 'Calibri', sans-serif;
+  font-size: 20px;
+  font-weight: 700; 
+ 
+}
+.controll1{
+  width: 20%;
+  margin-right: 3%;
+  font-family: 'Calibri', sans-serif;
+  font-size: 20px;
+  font-weight: 400; 
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 10px;
+  border-color: #00000033;
+  border-width: 1px;
+}
+.controll1::placeholder {
+  color: #0000004D
+}

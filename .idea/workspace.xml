@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04e0fcaf-ce02-4348-89e4-8512eb5e42b2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" 
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BillList/BillList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BillList/BillList.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/BillList/BillList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BillList/BillList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MedicalRecordList/MedicalRecordList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MedicalRecordList/MedicalRecordList.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MedicalRecordList/MedicalRecordList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MedicalRecordList/MedicalRecordList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBar/SideBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -94,11 +97,15 @@
       <workItem from="1725252770864" duration="4714000" />
       <workItem from="1725279580918" duration="366000" />
       <workItem from="1725290392407" duration="1320000" />
+
       <workItem from="1725428744967" duration="613000" />
       <workItem from="1725440359527" duration="8000" />
       <workItem from="1725440773011" duration="6302000" />
       <workItem from="1725459702585" duration="1117000" />
       <workItem from="1725469833632" duration="3004000" />
+
+      <workItem from="1725428744967" duration="6402000" />
+      <workItem from="1725470816883" duration="1211000" />
     </task>
     <servers />
   </component>
@@ -116,4 +123,6 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+
+
 </project>
