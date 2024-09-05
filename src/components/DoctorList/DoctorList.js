@@ -182,7 +182,7 @@ const DoctorList = () => {
                                 <h5 className="modal-title">{currentDoctor ? 'Edit Doctor' : 'Add Doctor'}</h5>
                                 <button
                                     type="button"
-                                    className="close"
+                                    className="  close "
                                     onClick={() => { setShowAddDoctorModal(false); setShowEditDoctorModal(false); }}
                                 >
                                     &times;
