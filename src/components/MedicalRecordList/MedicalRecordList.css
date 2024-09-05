@@ -1,0 +1,41 @@
+.container{
+    width: 75%;
+}
+.header-n{
+    font-weight: bold;
+    font-family: Inter;
+    font-size: 25px;
+    color: #007bff;
+
+}
+.search-bar{
+    margin-top: -10%;
+}
+.tbl-head{
+    font-weight: normal;
+    font-family: Inter;
+    font-size: 15px;
+}
+.doctor-tbl{
+    text-align: center;
+}
+/* General styling for images within table headers */
+.edit{
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the image */
+    margin: 0 10px; /* Adds horizontal margin of 10px on both left and right sides */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Adds smooth transition effects */
+}
+.delete{
+    cursor: pointer; /* Changes the cursor to a pointer when hovering over the image */
+    margin: 0 10px; /* Adds horizontal margin of 10px on both left and right sides */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Adds smooth transition effects */
+}
+
+/* Hover effect for edit and delete images specifically within table headers */
+th img.edit:hover,
+th img.delete:hover {
+    opacity: 0.7; /* Slightly reduces the opacity on hover */
+    transform: scale(1.1); /* Slightly enlarges the image on hover for a visual effect */
+}
+
+
