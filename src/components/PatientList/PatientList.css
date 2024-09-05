@@ -41,4 +41,12 @@ th img.delete:hover {
     transform: scale(1.1); /* Slightly enlarges the image on hover for a visual effect */
 }
 
+.patient-tbl{
+    margin-top: 20px;
+    text-align: center;
+}
 
+.header-name {
+    margin-top: 30px;
+    margin-bottom: 10px; /* Adjust this value to reduce the space */
+}

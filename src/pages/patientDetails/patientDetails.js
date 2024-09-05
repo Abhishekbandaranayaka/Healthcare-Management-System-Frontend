@@ -25,7 +25,7 @@ function Details() {
     const fetchChannelDetails = async () => {
       try {
         // Assuming there's a single appointment you want to fetch by its ID
-        const response = await axios.get('http://localhost:8082/api/appointments/1'); // Adjust endpoint and ID accordingly
+        const response = await axios.get('http://localhost:8082/api/appointments/26'); // Adjust endpoint and ID accordingly
         const appointment = response.data;
 
         // Map the fetched appointment data to your state

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './searchResults.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from '../../components/NavBar/NavBar';
@@ -6,13 +7,24 @@ import Footer from '../../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 
 const SearchResults = () => {
+    const [results, setResults] = useState([]);
     const navigate = useNavigate();
-    
-    const results = [
-        { name: 'Dr. Gotabhaya Ranasinghe', specialization: 'Cardiologist' },
-        { name: 'Dr. Manawshard Ali', specialization: 'Cardiologist' },
-        // Add more doctors as needed
-    ];
+
+    useEffect(() => {
+        // Fetch appointment data from the backend
+        axios.get('http://localhost:8082/api/appointments') // Update URL as needed
+            .then(response => {
+                // Transform the response to match the card data structure
+                const appointmentResults = response.data.map(appointment => ({
+                    name: `Dr. ${appointment.doctorName}`, // Assuming doctorName is included in the response
+                    specialization: appointment.specialization // Assuming specialization is included
+                }));
+                setResults(appointmentResults);
+            })
+            .catch(error => {
+                console.error('There was an error fetching the appointment data!', error);
+            });
+    }, []);
 
     const handleCardClick = (doctorName) => {
         navigate(`/bookinginformation/${doctorName}`);
@@ -48,8 +60,8 @@ const SearchResults = () => {
                 </div>
                 <div className="results-section">
                     {results.map((result, index) => (
-                        <button 
-                            key={index} 
+                        <button
+                            key={index}
                             className="result-card"
                             onClick={() => handleCardClick(result.name)}
                         >
