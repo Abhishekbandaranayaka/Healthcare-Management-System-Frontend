@@ -40,5 +40,9 @@ th img.delete:hover {
     opacity: 0.7; /* Slightly reduces the opacity on hover */
     transform: scale(1.1); /* Slightly enlarges the image on hover for a visual effect */
 }
-
+.close{
+    width: 10%;
+    position: absolute;
+    right: 10px;
+}
 
