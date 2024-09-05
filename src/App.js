@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer";
 import SideBar from "./components/SideBar/SideBar";
 import AppRoute from "./App.route";
 import PaymentDetailsPopup from './Pages/PaymentDetails/PaymentDetailPopup';
-import AppointmentTable from './components/AppointmentTable';
+import AppointmentTable from './components/Appointment/AppointmentTable';
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
