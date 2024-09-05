@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './DoctorList.css';
+import {useNavigate} from "react-router-dom";
 
 const DoctorList = () => {
+    const navigate = useNavigate();
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -96,6 +98,9 @@ const DoctorList = () => {
             console.error('Error deleting doctor:', error);
         }
     };
+    const handleRegisterDoctor = () => {
+        navigate('/signup-member'); // Redirect to the signup page
+    };
 
     const confirmDelete = (id) => {
         setDoctorToDelete(id);
@@ -110,15 +115,23 @@ const DoctorList = () => {
     return (
         <div>
             <div className="row">
-                <div className="col-6">
+                <div className="col-3">
                     <h1 className="header-name">Doctors List</h1>
                 </div>
-                <div className="col-6">
+               <div className="col-3 mt-md-4">
+                   <button
+                       className="adddoctor-btn btn btn-outline-primary"
+                       onClick={handleAddDoctor}
+                   >
+                       Add Doctor
+                   </button>
+               </div>
+                <div className="col-3 mt-0">
                     <button
-                        className="adddoctor-btn btn btn-outline-primary"
-                        onClick={handleAddDoctor}
+                        className="adddoctor-btn1 btn btn-outline-primary"
+                        onClick={handleRegisterDoctor}
                     >
-                        Add Doctor
+                        Doctor Registration
                     </button>
                 </div>
             </div>
@@ -169,7 +182,7 @@ const DoctorList = () => {
                                 <h5 className="modal-title">{currentDoctor ? 'Edit Doctor' : 'Add Doctor'}</h5>
                                 <button
                                     type="button"
-                                    className="close"
+                                    className="  close "
                                     onClick={() => { setShowAddDoctorModal(false); setShowEditDoctorModal(false); }}
                                 >
                                     &times;
