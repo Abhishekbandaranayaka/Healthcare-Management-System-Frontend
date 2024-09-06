@@ -58,7 +58,7 @@ function AppRoutes() {
 
 
             <Route path="/admin/*" element={
-                <Layout sections={['doctor', 'patient-admin', 'appointment-admin', 'bill', 'medicalRecords-admin']}>
+                <Layout sections={['doctor', 'patient-admin', 'appointment-admin', 'bill', 'medicalRecords-admin','notification']}>
                     <Routes>
                         <Route path="" element={<AdminDashboard />} />
                         <Route path="doctor-list" element={<DoctorList />} />
