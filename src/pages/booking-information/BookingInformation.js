@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Card, Button, Row, Col, Container, Image, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import './BookingInformation.css';
 
 const DoctorProfileWithBookings = () => {
+  const location = useLocation(); // Get the state passed from the previous page
+  const { doctorName, specialization } = location.state || {};
   const [showModal, setShowModal] = useState(false);
   const [error, setError] = useState('');  // For displaying booking errors
   const [bookings, setBookings] = useState([
@@ -16,8 +19,8 @@ const DoctorProfileWithBookings = () => {
     { id: 6, date: '2024-09-31', time: '18:00', isFull: true },
   ]);
 
-  const patientId = 10; // Replace with actual patient ID from authentication context
-  const doctorId = 3; // Assuming doctorId is known from previous page
+  const patientId = 12; // Replace with actual patient ID from authentication context
+  const doctorId = 4; // Assuming doctorId is known from previous page
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   const formatDateTime = (dateStr, timeStr) => {
@@ -84,8 +87,8 @@ const DoctorProfileWithBookings = () => {
                   </Col>
                   <Col xs={8} className="p-4">
                     <Card.Body>
-                      <Card.Title className="doctor-name">DR GOTABHAYA RANASINGHE</Card.Title>
-                      <Card.Text className="doctor-specialty">Cardiologist</Card.Text>
+                      <Card.Title className="doctor-name">{doctorName || "Doctor Name"}</Card.Title>
+                      <Card.Text className="doctor-specialty">{specialization || "Specialization"}</Card.Text>
                     </Card.Body>
                   </Col>
                 </Row>
