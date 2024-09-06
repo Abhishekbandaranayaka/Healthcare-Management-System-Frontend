@@ -118,17 +118,17 @@ const DoctorList = () => {
                 <div className="col-3">
                     <h1 className="header-name">Doctors List</h1>
                 </div>
-                <div className="col-3">
+               <div className="col-3 mt-md-4">
+                   <button
+                       className="adddoctor-btn btn btn-outline-primary"
+                       onClick={handleAddDoctor}
+                   >
+                       Add Doctor
+                   </button>
+               </div>
+                <div className="col-3 mt-0">
                     <button
-                        className="adddoctor-btn btn btn-outline-primary"
-                        onClick={handleAddDoctor}
-                    >
-                        Add Doctor
-                    </button>
-                </div>
-                <div className="col-3">
-                    <button
-                        className="adddoctor-btn btn btn-outline-primary"
+                        className="adddoctor-btn1 btn btn-outline-primary"
                         onClick={handleRegisterDoctor}
                     >
                         Doctor Registration
@@ -182,7 +182,7 @@ const DoctorList = () => {
                                 <h5 className="modal-title">{currentDoctor ? 'Edit Doctor' : 'Add Doctor'}</h5>
                                 <button
                                     type="button"
-                                    className="close"
+                                    className="  close "
                                     onClick={() => { setShowAddDoctorModal(false); setShowEditDoctorModal(false); }}
                                 >
                                     &times;

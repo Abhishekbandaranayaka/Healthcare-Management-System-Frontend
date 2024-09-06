@@ -148,3 +148,33 @@
   color: #000000;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.modal-body {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.modal-body h4 {
+  color: red;
+  font-weight: bold;
+}
+
+.modal-body p {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.custom-cancel-button {
+  background-color: #d1e0e2;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-cancel-button:hover {
+  background-color: #b3c6c7;
+}
