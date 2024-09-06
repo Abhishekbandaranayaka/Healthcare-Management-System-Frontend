@@ -15,11 +15,14 @@ h1 {
     margin-bottom: 50px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-  color: #2b2b2b; /* Heading color */
-  margin-bottom: 15%; /* Margin below the heading */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add drop shadow */
-  font-size: 36px; /* Adjust font size */
-  font-family: 'Calibri', sans-serif; /* Set Calibri as the font for all text */
+    color: #2b2b2b; /* Heading color */
+    margin-bottom: 15%; /* Margin below the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add drop shadow */
+    font-size: 36px; /* Adjust font size */
+    font-family: 'Calibri', sans-serif; /* Set Calibri as the font for all text */
+}
+.searching{
+    margin-top: -10%;
 }
 
 .form-group {

@@ -60,17 +60,10 @@ function AppRoutes() {
                 </Layout>
             } />
             <Route path="/doctor/*" element={
-                <Layout sections={['appointment', 'medicalRecords-doctor']}>
+                <Layout sections={['appointment-operator', 'medicalRecords-doctor']}>
                     <Routes>
                         <Route path="" element={<DoctorDashboard/>}/>
                         <Route path="medical-records" element={<MedicalRecordList/>}/>
-                    </Routes>
-                </Layout>
-            } />
-            <Route path="/operator/*" element={
-                <Layout sections={['bill', 'appointment-operator']}>
-                    <Routes>
-                        <Route path=" " element={<OperatorDashboard />}/>
                         <Route path="appointment-list" element={<AppointmentList/>}/>
                     </Routes>
                 </Layout>
