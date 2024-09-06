@@ -22,6 +22,13 @@ import MedicalRecordList from "./components/MedicalRecordList/MedicalRecordList"
 import AppointmentBooking from './pages/booking/Booking';
 import SearchResults from './pages/search Results/searchResults';
 import BillList from "./components/BillList/BillList";
+import CreateAppointment from "./components/Appintment-doctor/CreateAppointment";
+import Notification from './components/notification/notification';
+import AppointmentTable from "./components/AppointmentTable/AppointmentTable";
+import BillPayment from "./components/BillPayment/BillPayment";
+import CreateBill from "./components/CreateBill/CreateBill";
+import CreateMedicalRecordForm from "./components/CreateMedicalRecordForm/CreateMedicalRecordForm";
+import CreateNotification from "./components/CreateNotification/CreateNotification";
 
 
 
@@ -44,11 +51,17 @@ function AppRoutes() {
             <Route path="/booking" element={<AppointmentBooking />} />
             <Route path="/search results" element={<SearchResults />} />
             <Route path="/bill-list" element={<BillList/>} />
+            <Route path="/craete-appointment" element={<CreateAppointment/>}/>
+            <Route path="appointment-details" element={<AppointmentTable/>}/>
+            <Route path="/bill-payment" element={<BillPayment/>}/>
+            <Route path="/CreateBill" element={<CreateBill/>}/>
+            <Route path="/create-medical-record" element={<CreateMedicalRecordForm/>}/>
+            <Route path="/create-notification" element={<CreateNotification/>}/>
 
 
 
             <Route path="/admin/*" element={
-                <Layout sections={['doctor', 'patient-admin', 'appointment-admin', 'bill', 'medicalRecords-admin']}>
+                <Layout sections={['doctor', 'patient-admin', 'appointment-admin', 'bill', 'medicalRecords-admin','notification']}>
                     <Routes>
                         <Route path="" element={<AdminDashboard />} />
                         <Route path="doctor-list" element={<DoctorList />} />
@@ -56,28 +69,22 @@ function AppRoutes() {
                         <Route path="appointment-list" element={<AppointmentList/>}/>
                         <Route path="medical-records" element={<MedicalRecordList/>}/>
                         <Route path="bill-list" element={<BillList/>}/>
+                        <Route path="create-notification" element={<CreateNotification/>}/>
                     </Routes>
                 </Layout>
             } />
             <Route path="/doctor/*" element={
-                <Layout sections={['appointment', 'medicalRecords-doctor']}>
+                <Layout sections={['appointment-operator', 'medicalRecords-doctor']}>
                     <Routes>
                         <Route path="" element={<DoctorDashboard/>}/>
                         <Route path="medical-records" element={<MedicalRecordList/>}/>
-                    </Routes>
-                </Layout>
-            } />
-            <Route path="/operator/*" element={
-                <Layout sections={['bill', 'appointment-operator']}>
-                    <Routes>
-                        <Route path=" " element={<OperatorDashboard />}/>
                         <Route path="appointment-list" element={<AppointmentList/>}/>
                     </Routes>
                 </Layout>
             } />
 
 
-             <Route path="/home" element={
+             <Route path="/" element={
                 <Layout2 >
                     <Home />
                 </Layout2>
@@ -92,6 +99,15 @@ function AppRoutes() {
                     <DoctorProfileWithBookings />
                 </Layout2>
             } />
+            <Route path="/notification" element={
+                <Layout2>
+                    <Notification />
+                </Layout2>
+            } />
+
+
+
+
             <Route path="/faq" element={
                 <Layout2>
                     <FAQ />

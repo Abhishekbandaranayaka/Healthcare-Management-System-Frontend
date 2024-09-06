@@ -64,11 +64,11 @@ const BillList = () => {
         try {
             if (currentBill) {
                 // Update existing bill
-                await axios.put(`http://localhost:8084/api/billing/${currentBill.id}`, newBill);
+                await axios.put(`http://localhost:8085/api/billing/${currentBill.id}`, newBill);
                 setBills(bills.map(bill => bill.id === currentBill.id ? {...bill, ...newBill} : bill));
             } else {
                 // Add new bill
-                const response = await axios.post('http://localhost:8084/api/billing/create', newBill);
+                const response = await axios.post('http://localhost:8085/api/billing/create', newBill);
                 setBills([...bills, response.data]);
             }
             setShowEditBillModal(false);
@@ -104,6 +104,8 @@ const BillList = () => {
             <div className="row">
                 <h1 className="header-name">Bills List</h1>
             </div>
+            <a href="/CreateBill"><button>Create Bill</button></a>
+            <a href="/bill-payment"><button>Make Appointment</button></a>
             <table className="table table-bordered bill-tbl">
                 <thead>
                 <tr className="tbl-head">
@@ -112,7 +114,6 @@ const BillList = () => {
                     <th>Amount</th>
                     <th>Status</th>
                     <th>Payments</th>
-                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -130,20 +131,6 @@ const BillList = () => {
                                     ))}
                                 </ul>
                             ) : 'No Payments'}
-                        </td>
-                        <td>
-                            <img
-                                src="/assets/edit.png"
-                                alt="edit"
-                                className="img-fluid edit"
-                                onClick={() => handleEditBill(bill)}
-                            />
-                            <img
-                                src="/assets/delete.png"
-                                alt="delete"
-                                className="img-fluid delete"
-                                onClick={() => confirmDelete(bill.id)}
-                            />
                         </td>
                     </tr>
                 ))}

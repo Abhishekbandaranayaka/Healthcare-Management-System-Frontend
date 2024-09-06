@@ -70,7 +70,7 @@ function SideBar({ sections }) {
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'appointment' ? 'active' : ''}`}
-                            to="/operator/appointment-list"
+                            to="/doctor/appointment-list"
                             role="button"
                             onClick={() => handleSectionClick('appointment')}
                         >
@@ -117,6 +117,18 @@ function SideBar({ sections }) {
                             onClick={() => handleSectionClick('medicalRecords')}
                         >
                             Medical Records
+                        </Link>
+                    </li>
+                )}
+                {sections.includes('notification') && (
+                    <li className="nav-item">
+                        <Link
+                            className={`nav-link ${activeSection === 'notification' ? 'active' : ''}`}
+                            to="/admin/create-notification"
+                            role="button"
+                            onClick={() => handleSectionClick('medicalRecords')}
+                        >
+                            Notification
                         </Link>
                     </li>
                 )}
