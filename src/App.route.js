@@ -27,6 +27,7 @@ import AppointmentTable from "./components/AppointmentTable/AppointmentTable";
 import BillPayment from "./components/BillPayment/BillPayment";
 import CreateBill from "./components/CreateBill/CreateBill";
 import CreateMedicalRecordForm from "./components/CreateMedicalRecordForm/CreateMedicalRecordForm";
+import CreateNotification from "./components/CreateNotification/CreateNotification";
 
 
 
@@ -54,6 +55,7 @@ function AppRoutes() {
             <Route path="/bill-payment" element={<BillPayment/>}/>
             <Route path="/CreateBill" element={<CreateBill/>}/>
             <Route path="/create-medical-record" element={<CreateMedicalRecordForm/>}/>
+            <Route path="/create-notification" element={<CreateNotification/>}/>
 
 
 
@@ -66,6 +68,7 @@ function AppRoutes() {
                         <Route path="appointment-list" element={<AppointmentList/>}/>
                         <Route path="medical-records" element={<MedicalRecordList/>}/>
                         <Route path="bill-list" element={<BillList/>}/>
+                        <Route path="create-notification" element={<CreateNotification/>}/>
                     </Routes>
                 </Layout>
             } />
