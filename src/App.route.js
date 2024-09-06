@@ -77,7 +77,7 @@ function AppRoutes() {
             } />
 
 
-             <Route path="/home" element={
+             <Route path="/" element={
                 <Layout2 >
                     <Home />
                 </Layout2>

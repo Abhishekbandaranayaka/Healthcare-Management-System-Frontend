@@ -10,6 +10,8 @@ import specialist4 from '../../assets/images/specialist4.jpeg';
 import specialist5 from '../../assets/images/specialist5.jpeg';
 import specialist6 from '../../assets/images/specialist6.jpeg';
 import sectionImage from '../../assets/images/section-image.png';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 
 const specialists = [
   {
@@ -119,6 +121,7 @@ const Home = () => {
   return (
     <>
       <div>
+      <NavBar />
         <Carousel>
           <Carousel.Item>
             <div style={{ position: 'relative' }}>
@@ -214,6 +217,7 @@ const Home = () => {
             </Row>
           </div>
         </Container>
+        <Footer />
       </div>
     </>
   );
