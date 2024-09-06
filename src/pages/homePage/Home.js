@@ -10,8 +10,8 @@ import specialist4 from '../../assets/images/specialist4.jpeg';
 import specialist5 from '../../assets/images/specialist5.jpeg';
 import specialist6 from '../../assets/images/specialist6.jpeg';
 import sectionImage from '../../assets/images/section-image.png';
-import NavBar from "../../components/NavBar/NavBar";
-import Footer from "../../components/Footer/Footer";
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 
 const specialists = [
   {
@@ -121,7 +121,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <NavBar/>
+      <NavBar />
         <Carousel>
           <Carousel.Item>
             <div style={{ position: 'relative' }}>
@@ -171,7 +171,9 @@ const Home = () => {
 
         <Container className="mt-6">
           <div className="py-5">
-            <h2 style={{ fontSize: '26px', color: '#444444' }}>Welcome to Our Healthcare System</h2>
+            <h2 style={{ fontSize: '26px', color: '#444444', whiteSpace: 'nowrap', fontFamily: 'Calibri, sans-serif' }}>
+              Welcome to Our Healthcare System
+            </h2>
             <p style={{ textAlign: 'justify' }}>
               Our healthcare system is dedicated to providing high-quality, patient-centered care, ensuring that every individual receives the attention and treatment they deserve. We offer a comprehensive range of services tailored to meet your health needs at every stage of life, from infancy through to the elderly years. Whether you’re seeking routine checkups to maintain your health, specialized treatment for a specific condition, or immediate care during an emergency, our team of experienced professionals is here to support you.
             </p>
@@ -183,7 +185,9 @@ const Home = () => {
 
         <Container>
           <div className="mt-4">
-            <h2 style={{ fontSize: '26px', color: '#444444' }}>TOP SPECIALIST</h2>
+            <h2 style={{ fontSize: '26px', color: '#444444', whiteSpace: 'nowrap', fontFamily: 'Calibri, sans-serif' }}>
+              TOP SPECIALIST
+            </h2>
             <Row className="mt-4">
               {specialists.map((specialist, index) => (
                 <Col md={4} className="mb-4" key={index}>
@@ -217,7 +221,7 @@ const Home = () => {
             </Row>
           </div>
         </Container>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );
