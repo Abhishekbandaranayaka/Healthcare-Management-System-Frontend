@@ -70,7 +70,7 @@ function SideBar({ sections }) {
                     <li className="nav-item">
                         <Link
                             className={`nav-link ${activeSection === 'appointment' ? 'active' : ''}`}
-                            to="/operator/appointment-list"
+                            to="/doctor/appointment-list"
                             role="button"
                             onClick={() => handleSectionClick('appointment')}
                         >
