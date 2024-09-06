@@ -52,7 +52,7 @@ function AppRoutes() {
             <Route path="/search results" element={<SearchResults />} />
             <Route path="/bill-list" element={<BillList/>} />
             <Route path="/craete-appointment" element={<CreateAppointment/>}/>
-            <Route path="appointment-details" element={<AppointmentTable/>}/>
+            <Route path="/appointment-details" element={<AppointmentTable/>}/>
             <Route path="/bill-payment" element={<BillPayment/>}/>
             <Route path="/CreateBill" element={<CreateBill/>}/>
             <Route path="/create-medical-record" element={<CreateMedicalRecordForm/>}/>

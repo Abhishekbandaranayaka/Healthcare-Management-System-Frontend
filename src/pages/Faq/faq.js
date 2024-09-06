@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './faq.css';
+import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/Footer";
 
 const FAQ = () => {
     const [faqs, setFaqs] = useState([
@@ -73,6 +75,8 @@ const FAQ = () => {
     };
 
     return (
+        <div>
+            <NavBar/>
         <div className="faq-container">
             <h1>Frequently Asked Questions</h1>
             {faqs.map((faq, index) => (
@@ -88,6 +92,8 @@ const FAQ = () => {
                     )}
                 </div>
             ))}
+        </div>
+            <Footer/>
         </div>
     );
 };
