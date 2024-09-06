@@ -22,6 +22,7 @@ import MedicalRecordList from "./components/MedicalRecordList/MedicalRecordList"
 import AppointmentBooking from './pages/booking/Booking';
 import SearchResults from './pages/search Results/searchResults';
 import BillList from "./components/BillList/BillList";
+import CreateAppointment from "./components/Appintment-doctor/CreateAppointment";
 
 
 
@@ -44,7 +45,7 @@ function AppRoutes() {
             <Route path="/booking" element={<AppointmentBooking />} />
             <Route path="/search results" element={<SearchResults />} />
             <Route path="/bill-list" element={<BillList/>} />
-
+            <Route path="/craete-appointment" element={<CreateAppointment/>}/>
 
 
             <Route path="/admin/*" element={

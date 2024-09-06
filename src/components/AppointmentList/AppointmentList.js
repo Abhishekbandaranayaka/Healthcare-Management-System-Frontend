@@ -2,22 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './AppointmentList.css';
+import AppointmentForm from '../Appintment-doctor/CreateAppointment'; // Import the AppointmentForm component
 
 const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showEditAppointmentModal, setShowEditAppointmentModal] = useState(false);
-    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
     const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
     const [appointmentToDelete, setAppointmentToDelete] = useState(null);
     const [currentAppointment, setCurrentAppointment] = useState(null);
-    const [newAppointment, setNewAppointment] = useState({
-        patientId: '',
-        doctorId: '',
-        appointmentDate: '',
-        description: ''
-    });
     const [doctorIdSearch, setDoctorIdSearch] = useState(''); // Search state
 
     useEffect(() => {
@@ -41,38 +35,13 @@ const AppointmentList = () => {
         fetchAppointments();
     }, []);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewAppointment({ ...newAppointment, [name]: value });
-    };
-
     const handleEditAppointment = (appointment) => {
         setCurrentAppointment(appointment);
-        setNewAppointment(appointment);
         setShowEditAppointmentModal(true);
     };
 
     const handleSubmit = () => {
-        setShowConfirmationModal(true); // Show the confirmation modal
-    };
-
-    const handleConfirm = async () => {
-        try {
-            if (currentAppointment) {
-                // Update existing appointment
-                await axios.put(`http://localhost:8082/api/appointments/update/${currentAppointment.id}`, newAppointment);
-                setAppointments(appointments.map(app => app.id === currentAppointment.id ? { ...app, ...newAppointment } : app));
-            } else {
-                // Add new appointment
-                const response = await axios.post('http://localhost:8082/api/appointments/create', newAppointment);
-                setAppointments([...appointments, response.data]);
-            }
-            setShowEditAppointmentModal(false);
-            setShowConfirmationModal(false); // Close the confirmation modal
-            window.location.reload();
-        } catch (error) {
-            console.error('Error saving appointment:', error);
-        }
+        setShowEditAppointmentModal(true); // Show the form modal
     };
 
     const handleDeleteAppointment = async () => {
@@ -119,6 +88,13 @@ const AppointmentList = () => {
                 />
             </div>
 
+            <button
+                className="btn btn-primary"
+                onClick={() => handleEditAppointment(null)} // Open form for adding a new appointment
+            >
+                Add New Appointment
+            </button>
+
             <table className="table table-bordered appointment-tbl">
                 <thead>
                 <tr className="tbl-head">
@@ -129,7 +105,6 @@ const AppointmentList = () => {
                     <th>Doctor Name</th>
                     <th>Appointment Date</th>
                     <th>Appointment Time</th>
-                    <th>Description</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -143,7 +118,6 @@ const AppointmentList = () => {
                         <td>{ appointment.doctorName }</td>
                         <td>{appointment.appointmentDate.split('T')[0]}</td> {/* Date */}
                         <td>{appointment.appointmentDate.split('T')[1]}</td> {/* Time */}
-                        <td>{appointment.status}</td>
                         <td>
                             <img
                                 src="/assets/edit.png"
@@ -163,120 +137,12 @@ const AppointmentList = () => {
                 </tbody>
             </table>
 
-            {/* Modal for Adding/Editing an Appointment */}
-            {(showEditAppointmentModal) && (
-                <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">{currentAppointment ? 'Edit Appointment' : 'Add Appointment'}</h5>
-                                <button
-                                    type="button"
-                                    className="close"
-                                    onClick={() => { setShowEditAppointmentModal(false); }}
-                                >
-                                    &times;
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <div className="form-group">
-                                    <label>Patient ID</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="patientId"
-                                        value={newAppointment.patientId}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Doctor ID</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="doctorId"
-                                        value={newAppointment.doctorId}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Appointment Date</label>
-                                    <input
-                                        type="date"
-                                        className="form-control"
-                                        name="appointmentDate"
-                                        value={newAppointment.appointmentDate}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Description</label>
-                                    <textarea
-                                        className="form-control"
-                                        name="description"
-                                        value={newAppointment.description}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            </div>
-                            <div className="modal-footer">
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    onClick={() => { setShowEditAppointmentModal(false); }}
-                                >
-                                    Close
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick={handleSubmit}
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* Confirmation Modal */}
-            {showConfirmationModal && (
-                <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Confirm {currentAppointment ? 'Update' : 'Addition'}</h5>
-                                <button
-                                    type="button"
-                                    className="close"
-                                    onClick={() => setShowConfirmationModal(false)}
-                                >
-                                    &times;
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <p>Are you sure you want to {currentAppointment ? 'update' : 'add'} this appointment?</p>
-                            </div>
-                            <div className="modal-footer">
-                                <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    onClick={() => setShowConfirmationModal(false)}
-                                >
-                                    No
-                                </button>
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick={handleConfirm}
-                                >
-                                    Yes
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {/* Appointment Form Modal */}
+            {showEditAppointmentModal && (
+                <AppointmentForm
+                    appointmentId={currentAppointment ? currentAppointment.id : null}
+                    onClose={() => setShowEditAppointmentModal(false)}
+                />
             )}
 
             {/* Delete Confirmation Modal */}
