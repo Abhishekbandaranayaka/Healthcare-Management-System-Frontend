@@ -120,6 +120,18 @@ function SideBar({ sections }) {
                         </Link>
                     </li>
                 )}
+                {sections.includes('notification') && (
+                    <li className="nav-item">
+                        <Link
+                            className={`nav-link ${activeSection === 'notification' ? 'active' : ''}`}
+                            to="/admin/create-notification"
+                            role="button"
+                            onClick={() => handleSectionClick('medicalRecords')}
+                        >
+                            Notification
+                        </Link>
+                    </li>
+                )}
             </ul>
         </div>
     );
