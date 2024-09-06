@@ -1,0 +1,57 @@
+/* src/components/CreateAppointment.css */
+
+.create-appointment {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.create-appointment h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.create-appointment form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-appointment label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.create-appointment input,
+.create-appointment select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.create-appointment button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-appointment button:hover {
+    background-color: #0056b3;
+}
+
+.create-appointment p {
+    margin-top: 15px;
+    text-align: center;
+    color: #ff0000;
+}
