@@ -25,6 +25,7 @@ import BillList from "./components/BillList/BillList";
 import CreateAppointment from "./components/Appintment-doctor/CreateAppointment";
 import BillPayment from "./components/BillPayment/BillPayment";
 import CreateBill from "./components/CreateBill/CreateBill";
+import CreateMedicalRecordForm from "./components/CreateMedicalRecordForm/CreateMedicalRecordForm";
 
 
 
@@ -50,6 +51,7 @@ function AppRoutes() {
             <Route path="/craete-appointment" element={<CreateAppointment/>}/>
             <Route path="/bill-payment" element={<BillPayment/>}/>
             <Route path="/CreateBill" element={<CreateBill/>}/>
+            <Route path="/create-medical-record" element={<CreateMedicalRecordForm/>}/>
 
 
             <Route path="/admin/*" element={
