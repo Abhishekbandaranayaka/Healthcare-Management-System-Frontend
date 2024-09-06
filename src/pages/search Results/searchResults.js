@@ -14,20 +14,19 @@ const SearchResults = () => {
         // Fetch appointment data from the backend
         axios.get('http://localhost:8082/api/appointments') // Update URL as needed
             .then(response => {
-                // Transform the response to match the card data structure
                 const appointmentResults = response.data.map(appointment => ({
-                    name: `Dr. ${appointment.doctorName}`, // Assuming doctorName is included in the response
-                    specialization: appointment.specialization // Assuming specialization is included
+                    name: `Dr. ${appointment.doctorName}`,
+                    specialization: appointment.specialization
                 }));
                 setResults(appointmentResults);
             })
             .catch(error => {
-                console.error('There was an error fetching the appointment data!', error);
+                console.error('Error fetching the appointment data!', error);
             });
     }, []);
 
-    const handleCardClick = (doctorName) => {
-        navigate(`/bookinginformation/${doctorName}`);
+    const handleCardClick = (doctorName, specialization) => {
+        navigate('/bookinginformation', { state: { doctorName, specialization } });
     };
 
     return (
@@ -63,7 +62,7 @@ const SearchResults = () => {
                         <button
                             key={index}
                             className="result-card"
-                            onClick={() => handleCardClick(result.name)}
+                            onClick={() => handleCardClick(result.name, result.specialization)}
                         >
                             <div className="result-card-content">
                                 <span>{result.name}</span>

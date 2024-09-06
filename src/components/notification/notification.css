@@ -1,0 +1,92 @@
+.notification-popup {
+    width: 650px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+    overflow: hidden; /* Ensures no scrollbar appears */
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    color: #0b0909;
+    border-bottom: 1px solid #ccc;
+}
+
+.notification-header h2 {
+    margin: 0;
+    font-size: 16px;
+}
+.close-btn {
+    margin-left: 75%;
+    background: none;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 8px; /* Adjusted padding for a smaller clickable area */
+     /* Position the button in the corner */
+    right: 10px; /* Move to the right-hand side corner */
+    top: 10px;  /* Align it at the top of the container */
+}
+
+.close-btn:hover {
+    color: #ff0000; /* Change color on hover */
+    font-size: 16px; /* Keep the font size the same to prevent enlarging */
+    background: none; /* No background change on hover */
+}
+
+
+
+.notification-body {
+    padding: 10px;
+    max-height: 400px;
+    overflow: hidden; /* No scroll bar */
+}
+
+.notification-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-height: 40px; /* Default height */
+    overflow: hidden; /* Hide content overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Add ellipsis */
+}
+
+.notification-item.expanded {
+    max-height: none; /* Expand to show full content */
+    white-space: normal; /* Allow text wrapping */
+}
+
+.notification-footer {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: right; /* Aligns the content to the right */
+}
+
+.clear-btn {
+    background-color: #171414;
+    background-position-x: 20%;
+    color: white;
+    border: none;
+    width: 100px;
+    padding: 4px 8px; /* Reduced padding for a smaller button */
+    border-radius: 10px; /* Adjusted border-radius to match the smaller size */
+    cursor: pointer;
+    font-size: 12px; /* Reduced font size */
+}
+
+.clear-btn:hover {
+    background-color: #0b0909;
+}
