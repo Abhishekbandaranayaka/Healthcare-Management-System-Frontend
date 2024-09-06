@@ -47,7 +47,7 @@ const CreateNotificationForm = () => {
                         required
                     />
                 </div>
-                <button type="submit">Send Notification</button>
+                <button type="submit" className="btn btn-primary" >Send Notification</button>
             </form>
             {responseMessage && (
                 <p className={`message ${isError ? 'error' : 'success'}`}>{responseMessage}</p>

@@ -37,13 +37,10 @@ const NavBar = () => {
                                 <Link className="nav-link" to="/">HOME</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/contact">CONTACT</Link>
+                                <Link className="nav-link" to="/appointment-details">APPOINTMENTS</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/appointments">APPOINTMENTS</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/about">ABOUT US</Link>
+                                <Link className="nav-link" to="/faq">FAQ</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/signup">SIGN UP</Link>

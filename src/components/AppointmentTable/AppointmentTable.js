@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './AppointmentTable.css';
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 
 const initialAppointments = [
     { id: 1, name: 'Ima Herath', date: '13/06/2024', time: '10.00AM', doctor: 'Dr. Gotabhaya Ranasinghe', status: 'Unpaid' },
@@ -40,6 +42,8 @@ const AppointmentTable = ({ onRowClick }) => {
     };
 
     return (
+        <div>
+            <NavBar/>
         <div className="appointment-container">
             <h2>APPOINTMENT</h2>
             <input
@@ -73,6 +77,8 @@ const AppointmentTable = ({ onRowClick }) => {
                 ))}
                 </tbody>
             </table>
+        </div>
+            <Footer/>
         </div>
     );
 };

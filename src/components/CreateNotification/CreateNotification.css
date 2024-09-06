@@ -32,7 +32,7 @@ textarea {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #0179ff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -49,7 +49,7 @@ button:hover {
 }
 
 .message.success {
-    color: #28a745;
+    color: #28a73d;
 }
 
 .message.error {
