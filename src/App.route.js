@@ -23,6 +23,7 @@ import AppointmentBooking from './pages/booking/Booking';
 import SearchResults from './pages/search Results/searchResults';
 import BillList from "./components/BillList/BillList";
 import CreateAppointment from "./components/Appintment-doctor/CreateAppointment";
+import Notification from './components/notification/notification';
 
 
 
@@ -86,6 +87,15 @@ function AppRoutes() {
                     <DoctorProfileWithBookings />
                 </Layout2>
             } />
+            <Route path="/notification" element={
+                <Layout2>
+                    <Notification />
+                </Layout2>
+            } />
+
+
+
+
             <Route path="/faq" element={
                 <Layout2>
                     <FAQ />
