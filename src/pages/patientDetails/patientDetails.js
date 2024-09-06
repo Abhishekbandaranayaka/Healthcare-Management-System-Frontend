@@ -58,7 +58,7 @@ function Details() {
     try {
       const response = await axios.post('http://localhost:8080/api/patients/create', patientData);
       alert('Appointment successfully created!');
-      navigate('/home'); // Adjust the route to your home page path
+      navigate('/'); // Adjust the route to your home page path
 
 
       // Reset form after submission
@@ -84,7 +84,7 @@ function Details() {
               <p><strong>DOCTOR NAME</strong><br /><span className="left-padding">{channelDetails.doctorName}</span></p><hr />
               <p><strong>SPECIALIZATION</strong><br /><span className="left-padding">{channelDetails.specialization}</span></p><hr />
               <p><strong>DATE</strong><br /><span className="left-padding">{channelDetails.appointmentDate.split('T')[0]}</span></p><hr />
-              <p><strong>TIME</strong><br /><span className="left-padding">{channelDetails.time}</span></p><hr />
+              <p><strong>TIME</strong><br /><span className="left-padding">08.30</span></p><hr />
               <p><strong>PATIENT NUMBER</strong><br /><span className="left-padding">{channelDetails.patientId}</span></p><hr />
               <p><strong>DOCTOR NOTES</strong><br /><p className="left-padding">{channelDetails.doctorNotes}</p></p>
             </Card>
