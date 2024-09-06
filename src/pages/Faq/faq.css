@@ -1,0 +1,59 @@
+.faq-container {
+    padding: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+}
+
+.faq-question {
+    background-color: #b2beb5; /* Ash color background */
+    padding: 10px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 30px;
+    padding-left: 40px; /* Extra space for bullet */
+}
+
+.faq-question::before {
+    content: "•"; /* Custom bullet point */
+    color: black;
+    font-size: 1.5em; /* Adjust size as needed */
+    position: absolute;
+    left: 15px; /* Space from the left edge */
+    top: 50%; /* Vertically center */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+}
+
+.faq-toggle-arrow {
+    margin-left: auto; /* Pushes arrow to the far right */
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+.faq-answer {
+    padding: 15px;
+    background-color: #f9f9f9; /* Light background for answer */
+    border-top: 1px solid #e0e0e0;
+    transition: max-height 0.3s ease, padding 0.3s ease; /* Adds smooth transition */
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 5px; /* Adds a small gap between the question and the answer */
+}
+
+.open .faq-answer {
+    max-height: 100px; /* Adjust the max-height to fit content or set to 'none' */
+    padding: 15px; /* Ensure padding is applied when the answer is visible */
+}

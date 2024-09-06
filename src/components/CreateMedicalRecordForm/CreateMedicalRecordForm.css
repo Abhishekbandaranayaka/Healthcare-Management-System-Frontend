@@ -1,0 +1,65 @@
+/* CreateMedicalRecordForm.css */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container div {
+    margin-bottom: 15px;
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.message.error {
+    color: red;
+}
+
+.message.success {
+    color: green;
+}
