@@ -85,6 +85,9 @@ const MedicalRecordList = () => {
     const filteredRecords = records.filter(record =>
         record.patientId.toString().includes(searchQuery)
     );
+    const handleMedical = () => {
+        window.location.href = '/create-medical-record';
+    };
 
     return (
         <div className="container">
@@ -102,6 +105,10 @@ const MedicalRecordList = () => {
                     />
                 </div>
             </div>
+            <div>
+                <button onClick={handleMedical}>Create Medical Record</button>
+            </div>
+            <br/>
             <table className="table table-bordered medical-record-tbl">
                 <thead>
                 <tr className="tbl-head">
