@@ -18,6 +18,7 @@ const AppointmentList = () => {
         appointmentDate: '',
         description: ''
     });
+    const [doctorIdSearch, setDoctorIdSearch] = useState(''); // Search state
 
     useEffect(() => {
         const fetchAppointments = async () => {
@@ -92,13 +93,32 @@ const AppointmentList = () => {
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
-    const sortedAppointments = [...appointments].sort((a, b) => a.id - b.id);
+    // Filter appointments by doctorId
+    const filteredAppointments = doctorIdSearch
+        ? appointments.filter(app => app.doctorId.toString().includes(doctorIdSearch))
+        : appointments;
+
+    const sortedAppointments = [...filteredAppointments].sort((a, b) => a.id - b.id);
 
     return (
         <div>
             <div className="row">
                 <h1 className="header-name">Appointments List</h1>
             </div>
+
+            {/* Search Field */}
+            <div className="form-group">
+                <label htmlFor="doctorIdSearch">Search by Doctor ID</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="doctorIdSearch"
+                    placeholder="Enter Doctor ID"
+                    value={doctorIdSearch}
+                    onChange={(e) => setDoctorIdSearch(e.target.value)}
+                />
+            </div>
+
             <table className="table table-bordered appointment-tbl">
                 <thead>
                 <tr className="tbl-head">
