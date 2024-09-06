@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios for API requests
 import './notification.css';
+
+// URL for fetching notifications
+const API_URL = 'http://localhost:8086/api/notifications/list';
 
 const Notification = () => {
     const [showNotification, setShowNotification] = useState(true);
-    const [notifications, setNotifications] = useState([
-        "Welcome to Lifeline Healthcare! Your registration was successful. You can now log in and start exploring our services.",
-        "✅ You’re logged in! Welcome back to Lifeline Healthcare.",
-        "Payment Successful! Your transaction was completed. Thank you for choosing Lifeline Healthcare.",
-        "💡 Don’t Miss Out! Special offers are now live. Log in to see how you can save on your next appointment.",
-        "⏰ Reminder: You have an upcoming appointment with Lifeline Healthcare. See your schedule for details.",
-        "✔️ Update Successful! Your profile details have been saved.",
-        "🔐 Password Changed Successfully! You can now use your new password to log in."
-    ]);
+    const [notifications, setNotifications] = useState([]);
     const [expandedIndex, setExpandedIndex] = useState(null); // State to track which notification is expanded
+
+    useEffect(() => {
+        const loadNotifications = async () => {
+            try {
+                const response = await axios.get(API_URL);
+                const sortedNotifications = response.data.sort((a, b) => new Date(b.notificationDate) - new Date(a.notificationDate));
+                setNotifications(sortedNotifications);
+            } catch (error) {
+                console.error('Failed to fetch notifications:', error);
+            }
+        };
+
+        loadNotifications();
+    }, []); // Empty dependency array means this effect runs only once
 
     const handleCloseNotification = () => {
         setShowNotification(false);
@@ -27,13 +37,14 @@ const Notification = () => {
     };
 
     const getBackgroundColor = (notification) => {
-        if (notification.includes("registration")) return "#a8aaa9";
-        if (notification.includes("logged in")) return "#a8aaa9";
-        if (notification.includes("Payment Successful")) return "#a8aaa9";
-        if (notification.includes("Don’t Miss Out")) return "#a8aaa9";
-        if (notification.includes("Reminder")) return "#a8aaa9";
-        if (notification.includes("Update Successful")) return "#a8aaa9";
-        if (notification.includes("Password Changed")) return "#a8aaa9";
+        const message = notification.message || ""; // Access the message property if notification is an object
+        if (message.includes("registration")) return "#a8aaa9";
+        if (message.includes("logged in")) return "#a8aaa9";
+        if (message.includes("Payment Successful")) return "#a8aaa9";
+        if (message.includes("Don’t Miss Out")) return "#a8aaa9";
+        if (message.includes("Reminder")) return "#a8aaa9";
+        if (message.includes("Update Successful")) return "#a8aaa9";
+        if (message.includes("Password Changed")) return "#a8aaa9";
         return "#a8aaa9";
     };
 
@@ -54,7 +65,8 @@ const Notification = () => {
                                     style={{ backgroundColor: getBackgroundColor(notification) }}
                                     onClick={() => handleExpandNotification(index)}
                                 >
-                                    {notification}
+                                    <div><strong>Patient ID:</strong> {notification.patientId}</div>
+                                    <div>{notification.message}</div>
                                 </div>
                             ))
                         ) : (
